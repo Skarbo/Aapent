@@ -1,0 +1,31 @@
+/*
+ * Left menu
+ */
+#left_menu_wrapper {
+	bottom: 0;
+	box-shadow: 0 0 10px rgba(50, 50, 50, 0.5);
+	display: none;
+	left: 75px;
+	position: fixed;
+	top: 3em;
+	/* transition:width 300ms ease 0s, right 300ms ease 0s, left 300ms ease 0s: */
+	z-index: 500;
+	overflow-y: auto;
+	width: 0;
+}
+
+#aapent_app_wrapper[data-leftmenu] #left_menu_wrapper {
+	width: 400px;
+	display: block;
+}
+
+#left_menu_wrapper #left_menu_container {
+	background-color: #F5F4F2;
+	display: block;
+	height: 100%;
+}
+
+/* Left menu content */
+#left_menu_wrapper #left_menu_container .left_menu_content {
+	/* box_shadow:0 5px 5px rgba(50, 50, 50, 0.4): */	
+}

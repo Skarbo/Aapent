@@ -1,0 +1,97 @@
+/*
+ * Menu wrapper
+ */
+#menu_wrapper {
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+}
+
+#menu_wrapper #menu_container {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-top: 2px solid #333333;
+	display: inline-table;
+	font-size: 1.1em;
+	height: 1em;
+	width: 100%;
+	/* box_shadow:0px 2px 10px rgba(50, 50, 50, 0.75): */
+	/*border-bottom: 1px solid rgba(0, 0, 0, 0.25);*/
+}
+
+#menu_wrapper #menu_container>* {
+	display: table-cell;
+}
+
+#menu_wrapper #menu_left {
+	
+}
+
+#menu_wrapper #menu_right {
+	padding-bottom: 0.4em;
+	text-align: right;
+	vertical-align: top;
+}
+
+/* Menu item */
+#menu_wrapper #menu_right .menu_item {
+	background-color: #333333;
+	border-radius: 0 0 0.2em 0.2em;
+	display: inline-block;
+	margin: 0 0.5em;
+	padding: 0.2em 0.6em 0.4em 0.6em;
+	cursor: pointer;
+	color: white;
+}
+
+#menu_wrapper #menu_right .menu_item:HOVER,#menu_wrapper #menu_right .menu_item.touching
+	{ /* box_shadow:0px 2px 10px rgba(50, 50, 50, 0.75): */
+	
+}
+
+#menu_wrapper #menu_right .menu_item.touching {
+	background-color: #444;
+}
+
+#menu_wrapper #menu_right .menu_item span {
+	display: none;
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+#menu_wrapper #menu_right .menu_item img {
+	height: 1.5em;
+	vertical-align: middle;
+	width: 1.5em;
+}
+
+#menu_wrapper #menu_right .menu_item[data-item=location] img {
+	background: url("../svg.php?svg=location&fill=%23FFF") no-repeat scroll
+		0 0 transparent;
+}
+
+#menu_wrapper #menu_right .menu_item[data-item=search] img {
+	background: url("../svg.php?svg=search&stroke=%23FFF&fill=%23FFF")
+		no-repeat scroll 0 0 transparent;
+}
+
+#menu_wrapper #menu_right .menu_item[data-item=more] img {
+	background: url("../svg.php?svg=more&color=%23FFF") no-repeat scroll 0 0
+		transparent;
+}
+
+/* Relative */
+@media screen and (min-width: 480px) {
+	#menu_wrapper #menu_right .menu_item span {
+		display: inline;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	#menu_wrapper {
+		text-align: center;
+	}
+	#menu_wrapper #menu_container {
+		width: 768px;
+		text-align: left;
+	}
+}

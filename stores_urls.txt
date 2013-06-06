@@ -1,0 +1,17 @@
+Kiwi
+https://service-dk.norgesgruppen.no/api/FindStore/StoresClosestToMe/1100/?latitude=59.258875705352054&longitude=9.543037505640521&minnumberofstores=1&maxNumberOfStores=0&maxDistance=1380216&_=1369860019648
+
+Rimi
+http://rimi.no/js/shops_json.txt?v=1368987570
+
+Meny (post)
+http://meny.no/WebServices/AJAXService.asmx/GetMarkets
+
+Rema
+http://www.zpinmedia.com/embed/rema.no/ajax/search.php?&c[z%3Acat%3AALL]=&q=&lang=no&mo=435453&mn=default&json
+
+Joker (post)
+http://www.joker.no/WebServices/AJAXService.asmx/GetMarkets
+
+Spar (post)
+http://www.spar.no/WebServices/AJAXService.asmx/GetMarkets

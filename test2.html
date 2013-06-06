@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<style type="text/css">
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body,td,input {
+	font-family: 'Roboto';
+	font-size: 100%;
+}
+
+#wrapper {
+	
+}
+
+#nav_wrapper {
+	background-color: #161616;
+	bottom: 0;
+	color: white;
+	display: block;
+	position: fixed;
+	top: 0;
+	width: 75px;
+	z-index: 3000;
+	transition: width 300ms easy 0s;
+}
+
+#nav_wrapper #nav_container {
+	padding-top: 0.5em;
+}
+
+#nav_wrapper #nav_container .nav_item {
+	display: block;
+	text-align: center;
+	width: 100%;
+	cursor: pointer;
+	padding: 0.5em 0;
+}
+
+#nav_wrapper #nav_container .nav_item:HOVER {
+	background-color: black;
+	/* #B9F0FA */
+}
+
+#nav_wrapper #nav_container .nav_item[data-nav-selected] {
+	background-color: black;
+}
+
+#nav_wrapper #nav_container .nav_item img.nav_item_icon {
+	width: 35px;
+	height: 35px;
+	display: block;
+	vertical-align: middle;
+	margin: auto;
+	text-align: center;
+	display: block;
+}
+
+#nav_wrapper #nav_container .nav_item .nav_item_title {
+	font-size: 0.8em;
+	font-variant: small-caps;
+	padding: 0.2em 0;
+}
+
+#nav_wrapper #nav_container #left_menu_toggler {
+	margin-bottom: 0.5em;
+}
+
+#nav_wrapper #nav_container #left_menu_toggler img {
+	transition: transform 300ms ease 0s;
+	transform: rotate(180deg);
+}
+
+#nav_wrapper #nav_container .nav_item .nav_highlight {
+	border-color: transparent white transparent transparent;
+	border-style: solid;
+	border-width: 5px 5px 5px 0;
+	height: 0;
+	position: absolute;
+	width: 70px;
+	transition: left 300ms ease 0s;
+	display: none;
+}
+
+#wrapper[data-leftmenu] #nav_wrapper #nav_container .nav_item[data-nav-selected] .nav_highlight
+	{
+	display: inherit;
+}
+
+#wrapper[data-leftmenu] #nav_wrapper #nav_container #left_menu_toggler img
+	{
+	transform: rotate(0deg);
+}
+
+*[data-nav-content] {
+	display: none;
+}
+
+#wrapper[data-nav-selected="suggestions"]  *[data-nav-content="suggestions"]
+	{
+	display: block;
+}
+
+#wrapper[data-nav-selected="place"]  *[data-nav-content="place"] {
+	display: block;
+}
+
+#top_menu_wrapper {
+	position: absolute;
+	left: 75px;
+	top: 0;
+	width: 400px;
+	color: white;
+	z-index: 1000;
+	box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
+	transition: width 300ms ease 0s;
+	color: white;
+}
+
+#top_menu_wrapper #top_menu_container {
+	background-color: #353535;
+	display: table;
+	height: 3em;
+	width: 100%;
+}
+
+#top_menu_wrapper #top_menu_container>* {
+	display: table-cell;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper {
+	vertical-align: middle;
+	width: 100%;
+	font-size: 1.1em;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container
+	{
+	display: table;
+	vertical-align: middle;
+	margin: 0 0.5em;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container>*
+	{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container #search_icon
+	{
+	background-color: #545454;
+	padding: 0.2em 0.4em;
+	text-align: center;
+	cursor: pointer;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container #search_icon img
+	{
+	display: block;
+	vertical-align: middle;
+	height: 1em;
+	width: 1em;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container .input_wrapper
+	{
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 0.2em 0.4em;
+	width: 100%;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container #search_input
+	{
+	background-color: transparent;
+	padding: 0;
+	font-size: 1em;
+	margin: 0;
+	border: 0;
+	color: white;
+	width: 100%;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container #search_reset
+	{
+	min-width: 1em;
+	padding: 0.2em 0.4em;
+	text-align: center;
+	cursor: pointer;
+}
+
+#top_menu_wrapper #top_menu_container #search_wrapper #search_container #search_reset:AFTER
+	{
+	content: "X";
+}
+
+#left_menu_wrapper {
+	bottom: 0;
+	box-shadow: 0 0 10px rgba(50, 50, 50, 0.5);
+	display: none;
+	left: 75px;
+	position: fixed;
+	top: 3em;
+	transition: width 300ms ease 0s, right 300ms ease 0s;
+	z-index: 500;
+	overflow-y: auto;
+	width: 0;
+}
+
+#wrapper[data-leftmenu] #left_menu_wrapper {
+	width: 400px;
+	display: block;
+}
+
+#left_menu_wrapper #left_menu_container {
+	background-color: #F5F4F2;
+	display: block;
+	height: 100%;
+}
+
+#left_menu_wrapper #search_suggetions {
+	display: table;
+	width: 100%;
+	background-color: white;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion {
+	display: table-row;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion>* {
+	border-top: 1px solid rgba(0, 0, 0, 0.15);
+	display: table-cell;
+	padding: 0.4em 0.2em;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion:FIRST-CHILD>* {
+	border-top: 0;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion>*:HOVER {
+	background-color: #F5F4F2;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content_wrapper
+	{
+	width: 99%;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content>* {
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: middle;
+	padding-right: 0.2em;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content>*:LAST-CHILD
+	{
+	padding-right: 0;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .icon
+	{
+	width: 1px;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .icon img
+	{
+	height: 1em;
+	width: 1em;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .info
+	{
+	width: 99%;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .info .name
+	{
+	
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .info .address
+	{
+	font-size: 0.8em;
+	color: #666;
+	margin-top: -0.4em;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours
+	{
+	width: 1px;
+	font-size: 0.8em;
+	color: #666;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours>*
+	{
+	display: inline-block;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours .time
+	{
+	
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours .time .from
+	{
+	
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours .time .from:AFTER
+	{
+	content: "-";
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours .time .to
+	{
+	
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .content .hours .clock
+	{
+	
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .border {
+	padding: 0;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .border:AFTER {
+	content: " ";
+	border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .distance {
+	width: 1px;
+	font-size: 0.8em;
+	color: #666;
+	text-align: right;
+}
+
+#left_menu_wrapper #search_suggetions .search_suggestion .distance:AFTER
+	{
+	content: "m";
+	padding-left: 0.1em;
+}
+
+#left_menu_wrapper .left_menu_content {
+	
+}
+
+#map_wrapper {
+	height: 100%;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+	float: left;
+}
+
+#map_canvas {
+	bottom: 0;
+	left: 75px;
+	top: 0;
+	position: absolute;
+	right: 0;
+	transition: left 300ms ease 0s, top 300ms ease 0s;
+	z-index: auto;
+	position: absolute;
+	border-left: 5px solid red;
+}
+
+#wrapper[data-leftmenu] #map_canvas {
+	left: 475px;
+}
+
+.filler {
+	width: 99%;
+}
+
+/* Responsive */
+@media only screen and (max-width: 959px) {
+	#nav_wrapper {
+		width: 50px;
+	}
+	#nav_wrapper #nav_container .nav_item .nav_item_title {
+		display: none;
+	}
+	#nav_wrapper #nav_container .nav_item img.nav_item_icon {
+		
+	}
+	#nav_wrapper #nav_container .nav_item .nav_highlight {
+		width: 45px;
+	}
+	#top_menu_wrapper {
+		left: 50px;
+		width: 350px;
+	}
+	#left_menu_wrapper {
+		left: 50px;
+	}
+	#wrapper[data-leftmenu] #left_menu_wrapper {
+		width: 350px;
+	}
+	#map_canvas {
+		left: 50px;
+	}
+	#wrapper[data-leftmenu] #map_canvas {
+		left: 400px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#nav_wrapper {
+		
+	}
+	#top_menu_wrapper {
+		width: 300px;
+	}
+	#left_menu_wrapper {
+		
+	}
+	#wrapper[data-leftmenu] #left_menu_wrapper {
+		width: 300px;
+	}
+	#map_canvas {
+		
+	}
+	#wrapper[data-leftmenu] #map_canvas {
+		left: 350px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	#nav_wrapper {
+		
+	}
+	#top_menu_wrapper {
+		right: 0;
+		width: auto;
+	}
+	#left_menu_wrapper {
+		
+	}
+	#wrapper[data-leftmenu] #left_menu_wrapper {
+		right: 0;
+		width: auto;
+		margin-right: 1em;
+	}
+	#map_canvas {
+		
+	}
+	#wrapper[data-leftmenu] #map_canvas {
+		left: 50px;
+		top: 40px;
+	}
+}
+/*
+@media only screen and (max-width: 480px) {
+	#nav_wrapper {
+		
+	}
+	#top_menu_wrapper {
+		width: auto;
+		right: 0;
+	}
+	#left_menu_wrapper {
+		
+	}
+	#wrapper[data-leftmenu] #left_menu_wrapper {
+		
+	}
+	#map_canvas {
+		
+	}
+	#wrapper[data-leftmenu] #map_canvas {
+		top: 40px;
+	}
+}*/
+</style>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy5yabtN3ZFIlRM8-NEghybXTCZ-UQ7Dk&sensor=false">
+	
+</script>
+<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center : new google.maps.LatLng(-34.397, 150.644),
+			zoom : 8,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			zoomControl : true,
+			zoomControlOptions : {
+				position : google.maps.ControlPosition.RIGHT_BOTTOM
+			}
+		};
+		google.maps.visualRefresh = true;
+		//var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	$(document).ready(function() {
+		$("#left_menu_toggler").click(function() {
+			if ($("#wrapper").attr("data-leftmenu"))
+				$("#wrapper").removeAttr("data-leftmenu");
+			else
+				$("#wrapper").attr("data-leftmenu", "true");
+		});
+		$("#search_input").focus(function() {
+			$("#wrapper").attr("data-leftmenu", "true");
+		});
+
+		var suggestion = $(".search_suggestion");
+		for ( var i = 0; i < 20; i++)
+			$("#search_suggetions").append(suggestion.clone());
+
+		// Navigation
+		var dataNav = $("#nav_wrapper [data-nav-id]");
+		var dataNavHighlight = $("#nav_wrapper .nav_highlight");
+		dataNavHighlight.css("margin-top", (dataNav.height() / 2) - 2.5);
+
+		var dataNavSelectedFunc = function() {
+			var dataNavSelected = $("#wrapper").attr("data-nav-selected") || "suggestions";
+			var dataNavElement = $("#nav_wrapper [data-nav-id='" + dataNavSelected + "']");
+			dataNav.removeAttr("data-nav-selected");
+			if (dataNavElement.length > 0)
+				dataNavElement.attr("data-nav-selected", "true");
+			$("#wrapper").attr("data-nav-selected", dataNavSelected);
+		};
+		dataNavSelectedFunc();
+
+		dataNav.click(function() {
+			$("#wrapper").attr("data-nav-selected", $(this).attr("data-nav-id"));
+			dataNavSelectedFunc();
+		});
+	});
+</script>
+</head>
+<body>
+
+    <div id="wrapper" data-leftmenu="true">
+        <div id="nav_wrapper">
+            <div id="nav_container">
+                <div class="nav_item" id="left_menu_toggler">
+                    <img src="svg.php?svg=nav_left&color=white"
+                        class="nav_item_icon">
+                </div>
+                <div class="nav_item" data-nav-id="suggestions">
+                    <div class="nav_highlight"></div>
+                    <img src="svg.php?svg=marker&color=white"
+                        class="nav_item_icon">
+                    <div class="nav_item_title">Results</div>
+                </div>
+                <div class="nav_item" data-nav-id="place">
+                    <div class="nav_highlight"></div>
+                    <img src="svg.php?svg=marker&color=white"
+                        class="nav_item_icon">
+                    <div class="nav_item_title">Place</div>
+                </div>
+                <div class="nav_item" id="nav_item_location">
+                    <img src="svg.php?svg=location&color=white"
+                        class="nav_item_icon">
+                    <div class="nav_item_title">Location</div>
+                </div>
+            </div>
+        </div>
+        <div id="top_menu_wrapper">
+            <div id="top_menu_container">
+                <div id="search_wrapper">
+                    <div id="search_container">
+                        <div id="search_icon">
+                            <img src="svg.php?svg=search&color=white" />
+                        </div>
+                        <div class="input_wrapper">
+                            <input id="search_input"
+                                placeholder="Search..." />
+                        </div>
+                        <div id="search_reset"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="left_menu_wrapper">
+            <div id="left_menu_container">
+
+                <div class="left_menu_content"
+                    data-nav-content="suggestions">
+                    <div id="search_suggetions">
+                        <div class="search_suggestion">
+                            <div class="content_wrapper">
+                                <div class="content">
+                                    <div class="icon">
+                                        <img
+                                            src="image/icon/markers/meny3.png" />
+                                    </div>
+                                    <div class="info">
+                                        <div class="name">Name</div>
+                                        <div class="address">Address,
+                                            City</div>
+                                    </div>
+                                    <div class="hours">
+                                        <div class="time">
+                                            <span class="from">00</span><span
+                                                class="to">00</span>
+                                        </div>
+                                        <div class="clock">C</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border"></div>
+                            <div class="distance">000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="" class="left_menu_content" data-nav-content="place">
+
+                    <div class="place_container" style="background-color: white; box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.4); padding: 0.2em;">
+                        <div style="padding: 0.8em 0px; width: 100%;" class="place_info_wrapper">
+<div class="place_content" style="display: table; width: 100%;">
+
+                            <div style="display: table-cell; vertical-align: middle; padding: 0px 0.2em; width: 1px;" class="place_icon">
+                                <img style="height: 2em; width: 2em; display: block; vertical-align: middle; text-align: center;" src="image/icon/markers/meny3.png">
+                            </div>
+
+                            <div style="display: table-cell; vertical-align: middle; padding: 0px 0.2em; width: 99%;" class="place_info">
+
+                                <div class="name" style="line-height: 1em;">Rimi
+                                    HÃƒÆ’Ã†â€&trade;Ãƒâ€šÃ‚Â¥konsgaten test test test test
+                                    test test testtests</div>
+                                <div class="address" style="font-size: 0.8em; color: rgb(102, 102, 102); margin-top: -0.2em; line-height: 1em;">HÃƒÆ’Ã†â€&trade;Ãƒâ€šÃ‚Â¥konsgaten
+                                    36, Bergen, Norway test test test
+                                    test test test test test</div>
+                            </div>
+
+
+                        </div>
+
+<div style="padding-top: 0.5em; font-size: 0.8em; color: rgb(102, 102, 102); width: 100%; margin: auto; display: block; text-align: center;" class="place_info_contact_wrapper">
+<div class="place_info_contact_container" style="display: inline;">
+
+
+<div style="white-space: nowrap; display: inline-block; margin: auto;" class="place_info_contact_phone_row"><div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone_icon">
+<img style="height: 1em; width: 1em; display: block; vertical-align: middle;" title="Phone" alt="Phone" src="svg.php?svg=phone&amp;color=%23333">
+</div>
+<div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone">12 34 56 78</div>
+</div>
+
+<div style="white-space: nowrap; display: inline-block; margin: auto;" class="place_info_contact_phone_row"><div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone_icon">
+<img style="height: 1em; width: 1em; display: block; vertical-align: middle;" title="Phone" alt="Phone" src="svg.php?svg=phone&amp;color=%23333">
+</div>
+<div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone">email@email.com</div>
+</div>
+
+<div style="white-space: nowrap; display: inline-block; margin: auto;" class="place_info_contact_phone_row"><div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone_icon">
+<img style="height: 1em; width: 1em; display: block; vertical-align: middle;" title="Phone" alt="Phone" src="svg.php?svg=phone&amp;color=%23333">
+</div>
+<div style="display: inline-block; vertical-align: middle;" class="place_info_contact_phone">website.com</div>
+</div>
+
+</div>
+</div>
+</div>
+
+                        <div class="place_hours_wrapper" style="padding: 0.8em 0px; width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.3);">
+                            <div style="width: 100%; display: table;" class="place_hours_wrapper">
+
+                                <div style="vertical-align: top; display: table-cell; width: 1px; padding: 0.4em 0px;" class="place_hours_icon">
+                                    <img title="Hours" alt="Hours" src="svg.php?svg=clock&amp;color=%23333" style="width: 1em; height: 1em; display: block; vertical-align: middle;">
+                                </div>
+
+                                
+<div class="place_hours_container" style="vertical-align: top; display: table-cell;"><div style="display: table; width: 100%; font-size: 0.8em;">
+                                    <div style="vertical-align: top; margin: 0.2em; display: table-row-group;" class="place_hours">
+                                        <div style="display: table-row;" class="place_hour">
+                                            <div class="day" style="display: table-cell; padding: 0.2em 0.4em;">Today</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_from">09:00</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_to">22:00
+
+                                            </div>
+<div style="display: table-cell; padding: 0.2em; color: rgb(102, 102, 102);" class="place_alcohol">20:00
+
+                                            </div>
+                                        </div>
+
+                                        <div style="display: table-row;" class="place_hour">
+                                            <div class="day" style="display: table-cell; padding: 0.2em 0.4em;">Tue</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_from">09:00</div>
+                                            <div class="hour_to" style="display: table-cell; padding: 0.2em;">22:00
+
+                                            </div>
+                                        </div>
+
+                                        <div style="display: table-row;" class="place_hour">
+                                            <div class="day" style="display: table-cell; padding: 0.2em 0.4em;">Wed.</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_from">09:00</div>
+                                            <div class="hour_to" style="display: table-cell; padding: 0.2em;">22:00
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="place_hours" style="vertical-align: top; background-color: rgb(245, 244, 242); margin: 0.2em; display: table-row-group;">
+                                        <div class="place_hour" style="display: table-row;">
+                                            <div style="display: table-cell; padding: 0.2em 0.4em;" class="day">17.
+                                                mai</div>
+                                            <div class="hour_from" style="display: table-cell; padding: 0.2em;">09:00</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_to">22:00
+
+                                            </div>
+                                        </div>
+
+                                        <div class="place_hour" style="display: table-row;">
+                                            <div style="display: table-cell; padding: 0.2em 0.4em;" class="day">Kristi
+                                                him.dag</div>
+                                            <div class="hour_from" style="display: table-cell; padding: 0.2em;">09:00</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_to">22:00
+
+                                            </div>
+                                        </div>
+
+                                        <div class="place_hour" style="display: table-row;">
+                                            <div style="display: table-cell; padding: 0.2em 0.4em;" class="day">FÃƒÂ¸rste
+                                                pins.</div>
+                                            <div class="hour_from" style="display: table-cell; padding: 0.2em;">09:00</div>
+                                            <div style="display: table-cell; padding: 0.2em;" class="hour_to">22:00
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+<div style="display: table-row; line-height: 1em; color: rgb(170, 170, 170);">
+<div style="display: table-cell;">&nbsp;</div>
+<div style="display: table-cell;">Open</div>
+<div style="display: table-cell;">Close</div>
+<div style="display: table-cell;">
+<img alt="Alcohol" title="Alcohol" src="svg.php?svg=drinks&amp;color=%23666" style="height: 1em; width: 1em; display: block; margin: auto;">
+</div>
+</div>
+                                </div>
+</div>
+
+
+
+                            </div>
+
+                            <div style="display: block; width: 100%; margin: auto; padding-top: 0.4em;" class="place_hours_more">
+                                <div style="background-color: rgb(245, 244, 242); font-size: 0.7em; padding: 0.8em 0.4em;">
+                                    <img style="height: 1em; width: 1em; display: block; margin: auto;" src="svg.php?svg=double_down&amp;color=%23333" alt="More hours" title="More hours">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="place_map" style="display: table; width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.3); padding: 0.8em 0px;">
+                            <div style="text-align: center; display: table-cell; vertical-align: middle; padding: 0px 0.2em;" class="place_streetview">
+                                <img src="https://maps.googleapis.com/maps/api/streetview?size=400x75&amp;location=40.720032,%20-73.988354&amp;sensor=false" alt="Sreet image" style="border: 1px solid rgba(0, 0, 0, 0.3); width: 100%; display: block; vertical-align: middle;" class="place_streetview_image">
+                            </div>
+                            <div class="place_directions_button" style="display: table-cell; vertical-align: middle; text-align: center; padding: 0.4em; background-color: rgb(245, 244, 242); border: 1px solid rgba(0, 0, 0, 0.3);">
+                                <img class="place_button_image" title="Directions" alt="Directions" src="svg.php?svg=direction&amp;color=%23333" style="display: inline-block; height: 2em; text-align: center; vertical-align: middle; width: 2em;">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="map_wrapper">
+            <div id="map_canvas"></div>
+        </div>
+    </div>
+</body>
+</html>

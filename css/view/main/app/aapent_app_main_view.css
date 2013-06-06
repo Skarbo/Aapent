@@ -1,0 +1,110 @@
+/**
+ * Aapent app
+ */
+#aapent_app_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+/* Map wrapper */
+#aapent_app_wrapper  #map_wrapper {
+	height: 100%;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+	float: left;
+}
+
+#map_canvas {
+	bottom: 0;
+	left: 75px;
+	top: 0;
+	position: absolute;
+	right: 0;
+	transition: left 300ms ease 0s, top 300ms ease 0s;
+	z-index: auto;
+	position: absolute;
+}
+
+#aapent_app_wrapper[data-leftmenu] #map_canvas {
+	left: 475px;
+}
+
+/* /Map wrapper */
+
+/* Responsive */
+@media only screen and (max-width: 959px) {
+	#aapent_app_wrapper #navigation_wrapper {
+		width: 50px !important;
+	}
+	#aapent_app_wrapper #navigation_wrapper #navigation_container .navigation_item .title {
+		display: none !important;
+	}
+	#aapent_app_wrapper #navigation_wrapper #navigation_container .navigation_item .highlight {
+		width: 45px !important;
+	}
+	#aapent_app_wrapper #top_menu_wrapper {
+		left: 50px !important;
+		width: 350px !important;
+	}
+	#aapent_app_wrapper #left_menu_wrapper {
+		left: 50px !important;
+	}
+	#aapent_app_wrapper[data-leftmenu] #left_menu_wrapper {
+		width: 350px !important;
+	}
+	#aapent_app_wrapper #map_canvas {
+		left: 50px !important;
+	}
+	#aapent_app_wrapper[data-leftmenu] #map_canvas {
+		left: 400px !important;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#aapent_app_wrapper #navigation_wrapper {
+		
+	}
+	#aapent_app_wrapper #top_menu_wrapper {
+		width: 300px !important;
+	}
+	#aapent_app_wrapper #left_menu_wrapper {
+		
+	}
+	#aapent_app_wrapper[data-leftmenu] #left_menu_wrapper {
+		width: 300px !important;
+	}
+	#aapent_app_wrapper #map_canvas {
+		
+	}
+	#aapent_app_wrapper[data-leftmenu] #map_canvas {
+		left: 350px !important;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	#aapent_app_wrapper #navigation_wrapper {
+		
+	}
+	#aapent_app_wrapper #top_menu_wrapper {
+		right: 0 !important;
+		width: auto !important;
+	}
+	#aapent_app_wrapper #left_menu_wrapper {
+		
+	}
+	#aapent_app_wrapper[data-leftmenu] #left_menu_wrapper {
+		right: 0 !important;
+		width: auto !important;
+	}
+	#aapent_app_wrapper #map_canvas {
+		
+	}
+	#aapent_app_wrapper[data-leftmenu] #map_canvas {
+		left: 50px !important;
+		top: 40px !important;
+	}
+}

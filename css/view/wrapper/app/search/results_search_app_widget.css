@@ -1,0 +1,212 @@
+/*
+ * Search results
+ */
+#search_results_wrapper {
+	display: table;
+	width: 100%;
+	background-color: white;
+}
+
+#search_results_wrapper #search_results_container {
+	display: table-row-group;
+}
+
+/* Search result */
+#search_results_wrapper #search_results_container .search_result {
+	display: table-row;
+	/* gradient:#FFFFFF:0:#EDEDED:100: */
+}
+
+#search_results_wrapper #search_results_container .search_result>* {
+	border-top: 1px solid rgba(0, 0, 0, 0.15);
+	display: table-cell;
+	padding: 0.6em 0.2em;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#search_results_wrapper #search_results_container .search_result:FIRST-CHILD>*
+	{
+	border-top: 0;
+}
+
+#search_results_wrapper #search_results_container .search_result>*:HOVER
+	{
+	background-color: #EDEDED;
+	/* _ gradient:FFFFFF:0:#CDCDCD:100: */
+}
+
+/* ... Content */
+#search_results_wrapper #search_results_container .search_result .content_wrapper
+	{
+	width: 99%;
+}
+
+#search_results_wrapper #search_results_container .search_result .content
+	{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#search_results_wrapper #search_results_container .search_result .content>*
+	{
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: middle;
+	padding-right: 0.2em;
+}
+
+#search_results_wrapper #search_results_container .search_result .content>*:LAST-CHILD
+	{
+	padding-right: 0;
+}
+
+/* ... ... Icon */
+#search_results_wrapper #search_results_container .search_result .content .icon
+	{
+	width: 1px;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .icon img
+	{ /*height: 1em;*/
+	width: 1em;
+}
+/* ... ... /Icon */
+
+/* ... ... Info */
+#search_results_wrapper #search_results_container .search_result .content .info_wrapper
+	{
+	width: 99%;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .info
+	{
+	white-space: pre-wrap;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .info .name
+	{
+	line-height: 1em;
+	padding: 0.2em 0;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .info .address
+	{
+	font-size: 0.8em;
+	color: #666;
+	/*margin-top: -0.4em;*/
+	line-height: 0.8em;
+}
+/* ... ... /Info */
+
+/* ... ... Hours */
+#search_results_wrapper #search_results_container .search_result .content .hours
+	{
+	width: 1px;
+	font-size: 0.8em;
+	color: #666;
+}
+
+#search_results_wrapper #search_results_container .search_result[data-result-hours-open="open"] .content .hours
+	{
+	color: green !important;
+}
+
+#search_results_wrapper #search_results_container .search_result[data-result-hours-open="closed"] .content .hours
+	{
+	color: darkred !important;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .hours>*
+	{
+	display: inline-block;
+}
+
+/* ... ... ... Time */
+#search_results_wrapper #search_results_container .search_result .content .hours .time
+	{
+	padding-right: 0.2em;
+	display: none;
+}
+
+#search_results_wrapper #search_results_container .search_result[data-result-hours] .content .hours .time
+	{
+	display: inherit;
+}
+
+#search_results_wrapper #search_results_container .search_result .content .hours .time .from
+	{
+	
+}
+
+#search_results_wrapper #search_results_container .search_result .content .hours .time .from:AFTER
+	{
+	content: "-";
+}
+
+#search_results_wrapper #search_results_container .search_result .content .hours .time .to
+	{
+	
+}
+
+/* ... ... ... /Time */
+
+/* ... ... ... Clock */
+#search_results_wrapper #search_results_container .search_result .content .hours .clock
+	{
+	display: none;
+}
+
+#search_results_wrapper #search_results_container .search_result[data-result-hours-open] .content .hours .clock
+	{
+	display: inherit;
+}
+/* ... ... ... /Clock */
+
+/* ... ... /Hours */
+
+/* ... /Content */
+#search_results_wrapper #search_results_container .search_result .border
+	{
+	padding: 0;
+}
+
+#search_results_wrapper #search_results_container .search_result[data-result-distance] .border:AFTER {
+	content: " ";
+	border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* ... Distance */
+#search_results_wrapper #search_results_container .search_result .distance
+	{
+	width: 1px;
+	font-size: 0.8em;
+	color: #666;
+	text-align: right;
+}
+
+#search_results_wrapper #search_results_container .search_result .distance[data-result-distance]:AFTER
+	{
+	content: "m";
+	padding-left: 0.1em;
+	font-size: 0.8em;
+}
+
+#search_results_wrapper #search_results_container .search_result .distance[data-result-distance-km]:AFTER
+	{
+	content: "km";
+}
+
+/* ... /Distance */
+
+/* /Search result */
+
+/* No search results */
+#search_results_wrapper #search_results_none {
+	background: none repeat scroll 0 0 white;
+	color: #666666;
+	display: block;
+	padding: 0.4em;
+	text-align: center;
+}

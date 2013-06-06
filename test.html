@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="cache-control" content="no-cache">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+<style type="text/css">
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body,td,input {
+	font-family: 'Roboto';
+	font-size: 100%;
+}
+
+#wrapper {
+	
+}
+
+#left_menu_wrapper {
+	background-color: white;
+    bottom: 0;
+    box-shadow: 0 0 10px rgba(50, 50, 50, 0.75);
+    color: inherit;
+    left: 0;
+    margin: 1em;
+    overflow-y: auto;
+    position: fixed;
+    top: 41px;
+    width: 300px;
+    z-index: 1000;
+}
+
+#top_menu_wrapper {
+	background-color: rgba(255, 255, 255, 0.8);
+    border-top: 2px solid #333333;
+    box-shadow: 0 5px 10px rgba(50, 50, 50, 0.75);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#top_menu_wrapper #top_menu_container {
+	display: table;
+    font-size: 1.1em;
+    height: 100%;
+    padding-bottom: 0.2em;
+    width: 100%;
+}
+
+#top_menu_wrapper #top_menu_container>* {
+	display: table-cell;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+#top_menu_wrapper #top_menu_container #top_menu_left {
+	text-align: left;
+}
+
+#top_menu_wrapper #top_menu_container #top_menu_right {
+	text-align: right;
+}
+
+#top_menu_wrapper #top_menu_container .menu_tile {
+	background-color: #333333;
+	border-radius: 0 0 0.4em 0.4em;
+	color: white;
+	display: inline-block;
+	margin: 0 0.5em;
+	min-width: 1em;
+	padding: 0.2em 0.6em 0.4em;
+	text-align: center;
+	vertical-align: top;
+}
+
+#top_menu_wrapper #top_menu_container #left_menu_toggle:AFTER {
+	content: ">"
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent {
+	background-color: #333333;
+    border-radius: 0 0 0.4em 0.4em;
+    display: inline-block;
+    height: 100%;
+    margin: 0 0.5em;
+    vertical-align: top;
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent>* {
+	/*display: table-cell;
+	vertical-align: middle;*/
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent #search_wrapper {
+	color: white;
+    display: inline-table;
+    font-size: 0.8em;
+    height: 100%;
+    width: 400px;
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent #search_wrapper>*
+	{
+	display: table-cell;
+        padding: 0.2em 0.6em 0.4em;
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent #search_wrapper #search_reset
+	{
+	cursor: pointer;
+    text-align: center;
+    width: 1em;
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent #search_wrapper #search_button
+	{
+	background-color: #DD4B39;
+    border-radius: 0 0 0.4em 0;
+    cursor: pointer;
+    text-align: center;
+    width: 1em;
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent .input_wrapper {
+	
+}
+
+#top_menu_wrapper #top_menu_container .menu_compontent #search_input {
+	background-color: transparent;
+    border: 0 none;
+    color: white;
+    font-size: 1em;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#top_menu_wrapper #top_menu_container .menu_component {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+#map_wrapper {
+	height: 100%;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+	float: left;
+}
+
+#map_canvas {
+	bottom: 0;
+	left: 0;
+	top: 0;
+	position: absolute;
+	right: 0;
+	transition: left 300ms ease 0s;
+	z-index: auto;
+	position: absolute;
+}
+</style>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy5yabtN3ZFIlRM8-NEghybXTCZ-UQ7Dk&sensor=false">
+	
+</script>
+<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center : new google.maps.LatLng(-34.397, 150.644),
+			zoom : 8,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			zoomControl : true,
+			zoomControlOptions : {
+				position : google.maps.ControlPosition.RIGHT_BOTTOM
+			}
+		};
+		google.maps.visualRefresh = true;
+		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="top_menu_wrapper">
+            <div id="top_menu_container">
+                <div id="top_menu_left">
+                    <div class="menu_compontent">
+                        <div>
+                            <div id="search_wrapper">
+                                <div class="input_wrapper">
+                                    <input id="search_input"
+                                        placeholder="Search" />
+                                </div>
+                                <div id="search_reset">X</div>
+                                <div id="search_button">S</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="top_menu_right">
+                    <div class="menu_tile">Location</div>
+                    <div class="menu_tile">More</div>
+                </div>
+            </div>
+        </div>
+        <div id="left_menu_wrapper">Left</div>
+        <div id="map_wrapper">
+            <div id="map_canvas" />
+        </div>
+    </div>
+
+</body>
+</html>

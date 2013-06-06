@@ -1,0 +1,268 @@
+/*
+ * Search wrapper
+ */
+#search_wrapper {
+	position: absolute;
+	width: 100%;
+	z-index: 2000;
+}
+
+#search_wrapper #search_container {
+	margin: 1em;
+	/* box_shadow:0px 0px 10px rgba(50, 50, 50, 0.75): */
+	display: block;
+}
+
+/* Input */
+#search_wrapper #search_input_wrapper {
+	font-size: 1.2em;
+	display: table;
+	width: 100%;
+	background-color: white;
+}
+
+#search_wrapper #search_input_wrapper>* {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0.4em 0.6em;
+	cursor: pointer;
+}
+
+#search_wrapper #search_input_wrapper .input_wrapper {
+	background-color: white;
+	width: 99%;
+}
+
+#search_wrapper #search_input_wrapper #search_input {
+	background-color: white;
+	font-size: 1em;
+	width: 100%;
+}
+
+#search_wrapper #search_input_wrapper #search_reset {
+	cursor: pointer;
+}
+
+#search_wrapper #search_input_wrapper #search_reset.touching {
+	color: #DD4B39;
+}
+
+#search_wrapper #search_input_wrapper #search_button {
+	background-color: #DD4B39;
+	cursor: pointer;
+}
+
+#search_wrapper #search_input_wrapper #search_button.touching {
+	background-color: #C43421;
+}
+
+#search_wrapper #search_input_wrapper #search_button img {
+	background: url("../svg.php?svg=search&stroke=%23FFF&fill=%23FFF")
+		no-repeat scroll 0 0 transparent;
+	height: 1em;
+	width: 1em;
+	vertical-align: sub;
+}
+
+/* Suggestion */
+#search_wrapper #search_suggestion_wrapper {
+	background-color: white;
+	display: table;
+	margin-top: 0;
+	width: 100%;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion {
+	display: table-row;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion.template {
+	
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion>* {
+	border-top: 1px solid rgba(0, 0, 0, 0.4);
+	display: table-cell;
+	padding: 0.4em 0.2em;
+	cursor: pointer;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion:HOVER,#search_wrapper #search_suggestion_wrapper .search_suggestion>*.touching
+	{
+	background-color: #EFEFEF;
+}
+
+/* ... Icon */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .icon {
+	width: 1px;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .icon img
+	{
+	height: 1em;
+	width: 1em;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-suggestion-type="google_autocomplete"] .icon img
+	{
+	background: url("../svg.php?svg=map&stroke=%23333&fill=%23333")
+		no-repeat scroll 0 0 transparent;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-suggestion-type="google_places"] .icon img
+	{
+	background: url("../svg.php?svg=marker&stroke=%23333&fill=%23333")
+		no-repeat scroll 0 0 transparent;
+}
+
+/* ... Description */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .description .description_wrapper
+	{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/* ... ... Title */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .description .title
+	{
+	
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .description .title span
+	{
+	font-weight: bold;
+}
+/* ... ... /Title */
+
+/* ... ... Address */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .description .address
+	{
+	color: #666666;
+	font-size: 0.7em;
+}
+
+/* ... ... Address */
+
+/* ... /Description */
+
+/* ... Hours */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .hours {
+	width: 1px;
+	text-align: right;
+	color: #666;
+	font-size: 0.8em;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion:NOT(.template) .hours>* {
+	display: none;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion.template .hours>* {
+	display: inline-block;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-hours-open="open"] .hours
+	{
+	color: green;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-hours-open="closed"] .hours
+	{
+	color: darkred;
+}
+
+/* ... ... Icon */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .hours .clock
+	{
+	
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-hours-open] .hours .clock
+	{
+	display: inline-block;
+}
+
+/* ... ... /Icon */
+
+/* ... ... Time */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .hours .time
+	{
+	padding-right: 0.1em;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion[data-hours] .hours .time
+	{
+	display: inline-block;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .hours .time span
+	{
+	
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .hours .time span:FIRST-CHILD:AFTER
+	{
+	content: "-"
+}
+
+/* ... ... /Time */
+
+/* ... /Hours */
+
+/* ... Distance */
+#search_wrapper #search_suggestion_wrapper .search_suggestion .distance
+	{
+	font-size: 0.8em;
+	color: #666666;
+	width: 1px;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .distance:BEFORE
+	{
+	border-left: 1px solid rgba(0, 0, 0, 0.4);
+	content: " ";
+	padding-left: 0.2em;
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .distance:AFTER
+	{
+	padding-left: 0.1em;
+	content: "m";
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .distance[data-distance-km]:AFTER
+	{
+	content: "km";
+}
+
+#search_wrapper #search_suggestion_wrapper .search_suggestion .distance[data-disabled]:AFTER
+	{
+	content: "";
+}
+
+/* ... /Distance */
+
+/* /Suggestion */
+
+/* Result */
+#search_wrapper #search_result_wrapper {
+	
+}
+
+/* /Result */
+
+/* Relative */
+@media screen and (min-width: 768px) {
+	#search_wrapper {
+		text-align: center;
+	}
+	#search_wrapper #search_container {
+		width: 768px;
+		margin: 1em 0;
+		text-align: left;
+		display: inline-block;
+	}
+}

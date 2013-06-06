@@ -1,0 +1,975 @@
+26-05-2013 19:57
+Could not include class "DefaultLocale" (/Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/src/locale/default_locale.php) called from : /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/util/initialize_util.php:66
+#0 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(10): InitializeUtil::getClassPathFile('DefaultLocale', '/Users/kristoff...')
+#1 [internal function]: __autoload('DefaultLocale')
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/locale/locale.php(77): class_exists('DefaultLocale')
+#3 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(341): Locale::instance()
+#4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(86): AbstractApi->doDatabaseAndLocaleSetup(3)
+#5 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(19): AbstractApi->__construct(3)
+#6 {main}
+
+26-05-2013 19:58
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aapent_test.debug' doesn't exist /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php:157
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php(80): PdoDbApi->querySelect(Object(SelectQueryDbCore))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/dao/db/debug_db_dao.php(97): PdoDbApi->query(Object(SelectQueryDbCore))
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/handler/debug_handler.php(37): DebugDbDao->getNextSession()
+#3 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(294): DebugHandler->__construct(Object(DebugDbDao), 1)
+#4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(22): AbstractApi->setDebug(Array)
+#5 {main}
+SELECT debug_session AS session FROM debug ORDER BY debug_session DESC LIMIT 1
+Array
+(
+)
+
+26-05-2013 20:41
+Could not get HTML from webpage ("http://rimi.no/js/shops_json.txt?v=1368987570") /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php:93
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(70): WebsiteParser->parse('http://rimi.no/...', Object(StoreWebsiteAlgorithmParser))
+#1 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#2 {main}
+
+26-05-2013 21:16
+Could not decode json: 4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://rimi.no/...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:21
+Could not decode json: 4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:24
+Could not decode json: Unknown error /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:25
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:28
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:28
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:29
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:30
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:31
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:32
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:33
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:33
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:33
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:33
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:33
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:34
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:34
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:34
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:59
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:35
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:60
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:35
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:60
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:35
+Could not decode json: Syntax error, malformed JSON /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php:60
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#3 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:39
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:54
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:54
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:54
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 21:55
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:32
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:32
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 22:32
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(96): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(68): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:24
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', NULL, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:24
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', NULL, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:25
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:26
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:29
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:29
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:29
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:30
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:30
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:30
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:27
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 27, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(27): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:27
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 27, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(27): json_decode(Array)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:31
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:33
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:33
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:33
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:37
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:27
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 27, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(27): json_decode(Array)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:37
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:30
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 30, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(30): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:37
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:33
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 33, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(33): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:37
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:34
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 34, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(34): json_decode(Array, true)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+26-05-2013 23:44
+json_decode() expects parameter 1 to be string, array given /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php:27
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'json_decode() e...', '/users/kristoff...', 27, Array)
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/model/factory/store_factory_model.php(27): json_decode(Array)
+#2 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(100): StoreFactoryModel::createStore('Rimi Algarheimv...', 'rimi', Array, '', '', Array, Array, '1973')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/parser/algorithm/website/store/rimi_store_website_algorithm_parser.php(72): RimiStoreWebsiteAlgorithmParser->parseShop(Array)
+#4 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/parser/website_parser.php(96): RimiStoreWebsiteAlgorithmParser->parseHtmlRaw(Object(simple_html_dom))
+#5 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/handler/website/store_website_handler.php(75): WebsiteParser->parse('http://localhos...', Object(RimiStoreWebsiteAlgorithmParser))
+#6 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(31): StoreWebsiteHandler->handle(Object(GroupStoreModel))
+#7 {main}
+
+27-05-2013 00:12
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`aapent_test`.`store`, CONSTRAINT `store_ibfk_1` FOREIGN KEY (`store_group`) REFERENCES `store_group` (`store_group_id`) ON DELETE SET NULL ON UPDATE CASCADE) /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php:247
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php(92): PdoDbApi->queryInsert(Object(InsertQueryDbCore))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/dao/db/standard_db_dao.php(265): PdoDbApi->query(Object(InsertQueryDbCore))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(44): StandardDbDao->add(Object(StoreModel), 1)
+#3 {main}
+INSERT INTO store (store_id_store, store_name, store_group, store_info, store_location_lat, store_location_long, store_hours, store_features) VALUES (:id_store, :name, :group, :info, :locationLat, :locationLong, :hours, :features)
+Array
+(
+    [id_store] => 1973
+    [name] => Rimi Algarheimveien
+    [group] => 0
+    [info] => []
+    [locationLat] => 
+    [locationLong] => 
+    [hours] => {"regular":{"mon":["07:00","23:00"],"tue":["07:00","23:00"],"wed":["07:00","23:00"],"thu":["07:00","23:00"],"fri":["07:00","23:00"],"sat":["08:00","21:00"],"sun":"closed"}}
+    [features] => []
+)
+
+27-05-2013 00:14
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`aapent_test`.`store`, CONSTRAINT `store_ibfk_1` FOREIGN KEY (`store_group`) REFERENCES `store_group` (`store_group_id`) ON DELETE SET NULL ON UPDATE CASCADE) /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php:247
+#0 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php(92): PdoDbApi->queryInsert(Object(InsertQueryDbCore))
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/dao/db/standard_db_dao.php(265): PdoDbApi->query(Object(InsertQueryDbCore))
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(76): StandardDbDao->add(Object(StoreModel), 1)
+#3 {main}
+INSERT INTO store (store_id_store, store_name, store_group, store_info, store_location_lat, store_location_long, store_hours, store_features) VALUES (:id_store, :name, :group, :info, :locationLat, :locationLong, :hours, :features)
+Array
+(
+    [id_store] => 1973
+    [name] => Rimi Algarheimveien
+    [group] => 0
+    [info] => []
+    [locationLat] => 
+    [locationLong] => 
+    [hours] => {"regular":{"mon":["07:00","23:00"],"tue":["07:00","23:00"],"wed":["07:00","23:00"],"thu":["07:00","23:00"],"fri":["07:00","23:00"],"sat":["08:00","21:00"],"sun":"closed"}}
+    [features] => []
+)
+
+27-05-2013 00:14
+Cannot modify header information - headers already sent by (output started at /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php:69) /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php:32
+#0 [internal function]: AbstractApi->doErrorHandling(2, 'Cannot modify h...', '/Users/kristoff...', 32, Array)
+#1 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/cms.php(32): header('HTTP/1.1 500 In...')
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(431): CmsKillHandler->handle(Object(DbException))
+#3 [internal function]: AbstractApi->doExceptionHandling(Object(DbException))
+#4 {main}
+
+27-05-2013 10:59
+Could not include class "InterfaceController" (/Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/src/controller/interface_controller.php) called from /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest_controller.php:4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/util/initialize_util.php:66
+#0 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(10): InitializeUtil::getClassPathFile('InterfaceContro...', '/Users/kristoff...')
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest_controller.php(4): __autoload('InterfaceContro...')
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(11): require_once('/users/kristoff...')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest/aapent_rest_controller.php(4): __autoload('RestController')
+#4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(11): require_once('/users/kristoff...')
+#5 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(28): __autoload('AapentRestContr...')
+#6 {main}
+
+27-05-2013 10:59
+Could not include class "InterfaceController" (/Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/src/controller/interface_controller.php) called from /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest_controller.php:4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/util/initialize_util.php:66
+#0 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(10): InitializeUtil::getClassPathFile('InterfaceContro...', '/Users/kristoff...')
+#1 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest_controller.php(4): __autoload('InterfaceContro...')
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(11): require_once('/users/kristoff...')
+#3 /users/kristofferskarbo/dropbox/scripting/krisskarbo/aapent/src/controller/rest/aapent_rest_controller.php(4): __autoload('RestController')
+#4 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(11): require_once('/users/kristoff...')
+#5 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/api_rest.php(28): __autoload('AapentRestContr...')
+#6 {main}
+
+31-05-2013 10:17
+Connect error: SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock' (2) /users/kristofferskarbo/dropbox/scripting/krisskarbo/krisskarboapi/src/api/db/pdo_db_api.php:54
+#0 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(338): PdoDbApi->connect()
+#1 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/krisskarboapi/src/api/api/abstract_api.php(86): AbstractApi->doDatabaseAndLocaleSetup(3)
+#2 /Users/kristofferskarbo/Dropbox/Scripting/KrisSkarbo/Aapent/index.php(20): AbstractApi->__construct(3)
+#3 {main}
+
