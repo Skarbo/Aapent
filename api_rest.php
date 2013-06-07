@@ -124,7 +124,7 @@ $api->setOutputHandler( new ApirestOutputHandler() );
 // Do request
 $api->doRequest(  $mapping );
 
-error_log( "Testing log file", 3, "log.log" );
+@error_log( "Testing log file", 3, "log.log" );
 
 // Destruct
 $api->destruct();
