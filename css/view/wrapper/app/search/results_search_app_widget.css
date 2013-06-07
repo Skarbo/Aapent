@@ -186,7 +186,7 @@
 	text-align: right;
 }
 
-#search_results_wrapper #search_results_container .search_result .distance[data-result-distance]:AFTER
+#search_results_wrapper #search_results_container .search_result[data-result-distance] .distance:AFTER
 	{
 	content: "m";
 	padding-left: 0.1em;
