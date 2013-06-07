@@ -89,7 +89,7 @@ class ApirestKillHandler extends ClassCore implements KillHandler
      */
     public function isAutoErrorLog(Exception $exception)
     {
-        return true;
+        return false;
     }
 
 }
