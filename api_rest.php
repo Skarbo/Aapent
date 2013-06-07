@@ -125,6 +125,6 @@ $api->setOutputHandler( new ApirestOutputHandler() );
 $api->doRequest(  $mapping );
 
 // Destruct
-$api->destruct();
+// $api->destruct();
 
 ?>
