@@ -17,10 +17,10 @@ function __autoload( $class_name )
 }
 
 // Initiate AapentApi
-$api = new AapentApi( AapentApi::MODE_TEST );
+$api = new AapentApi( AapentApi::MODE_PROD );
 
 // Set Debug handler
-$api->setDebug( array ( AapentApi::MODE_DEV => DebugHandler::LEVEL_LOW ) );
+$api->setDebug( array ( AapentApi::MODE_DEV => DebugHandler::LEVEL_LOW, AapentApi::MODE_PROD => DebugHandler::LEVEL_HIGH ) );
 
 // Mapping
 $mapping = array ();

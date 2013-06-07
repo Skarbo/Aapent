@@ -1,6 +1,6 @@
 <?php
 
-class AapentApi extends AbstractApi
+class AapentApi extends PasswordAapentApi
 {
 
     // VARIABLES
@@ -11,17 +11,10 @@ class AapentApi extends AbstractApi
      */
     private $logHandler;
 
-    private static $DB_CONFIG_LOCAL = array (
-            //self::MODE_DEV => array ( "localhost", "campusguide_dev", "root", "" ),
-            self::MODE_TEST => array ( "localhost", "aapent_test", "root", "" )
-            //self::MODE_PROD => array ( "localhost", "campusguide_prod", "root", "" )
-             );
-
     // /VARIABLES
 
 
     // CONSTRUCTOR
-
 
 
     // /CONSTRUCTOR
@@ -30,30 +23,15 @@ class AapentApi extends AbstractApi
     // FUNCTIONS
 
 
-//     /**
-//      * @see AbstractApi::getLocale()
-//      * @return DefaultLocale
-//      */
-//     public function getLocale()
-//     {
-//         return parent::getLocale();
-//     }
+    //     /**
+    //      * @see AbstractApi::getLocale()
+    //      * @return DefaultLocale
+    //      */
+    //     public function getLocale()
+    //     {
+    //         return parent::getLocale();
+    //     }
 
-    /**
-     * @see AbstractApi::getDatabaseLocalConfig()
-     */
-    protected function getDatabaseLocalConfig()
-    {
-        return self::$DB_CONFIG_LOCAL;
-    }
-
-    /**
-     * @see AbstractApi::getDatabasePublicConfig()
-     */
-    protected function getDatabasePublicConfig()
-    {
-        return self::$DB_CONFIG_LOCAL;
-    }
 
     /**
      * @see AbstractApi::getDbbackupHandler()
@@ -79,7 +57,6 @@ class AapentApi extends AbstractApi
     }
 
     // /FUNCTIONS
-
 
 
 }
