@@ -44,3 +44,5 @@ Thumbs.db
 dbbackup/localhost/aapent_prod.sql
 
 .DS_Store
+
+dbbackup/_backupinfo.txt
