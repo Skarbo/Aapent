@@ -680,10 +680,10 @@ AapentHandler.prototype.handleGeolocationPosition = function(geolocationPosition
 	// this.location.circle.setVisible(false);
 
 	if (this.geolocationCounter++ == 0)
-		this.doMapViewport(latLng, true);
+		this.doMapViewport(latlng, true);
 // this.searchPositions.push(latLng);
 	
-	this.doPositionsAdd(latLng);
+	this.doPositionsAdd(latlng);
 	
 		// this.getController().getEventHandler().handle(new
 		// PositionEvent(latlng));
