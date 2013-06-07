@@ -89,7 +89,7 @@ class ApirestKillHandler extends ClassCore implements KillHandler
      */
     public function isAutoErrorLog(Exception $exception)
     {
-        return false;
+        return true;
     }
 
 }
@@ -125,6 +125,6 @@ $api->setOutputHandler( new ApirestOutputHandler() );
 $api->doRequest(  $mapping );
 
 // Destruct
-// $api->destruct();
+$api->destruct();
 
 ?>
