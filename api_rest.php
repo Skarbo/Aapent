@@ -17,7 +17,7 @@ function __autoload( $class_name )
 }
 
 // Initiate AapentApi
-$api = new AapentApi( AapentApi::MODE_TEST );
+$api = new AapentApi( AapentApi::MODE_PROD );
 
 // Set Debug handler
 $api->setDebug(
