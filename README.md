@@ -1,4 +1,4 @@
 Aapent
 ======
 
-Webpage: [KrisSkarbo.com/Aapent](http://krisskarbo.com/aapent/)
+Beta web application: [KrisSkarbo.com/Aapent](http://krisskarbo.com/aapent/)
