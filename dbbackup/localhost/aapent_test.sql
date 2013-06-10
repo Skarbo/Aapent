@@ -1,4 +1,4 @@
--- Mon, 10 Jun 2013 02:57:11 GMT
+-- Mon, 10 Jun 2013 19:58:11 GMT
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 -- Dumping database structure for aapent_test
@@ -46,7 +46,7 @@ CREATE TABLE `error` (
   `error_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`error_id`),
   UNIQUE KEY `error_unique` (`error_file`,`error_line`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
 -- Dumping structure for table aapent_test.feature

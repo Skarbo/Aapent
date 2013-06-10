@@ -37,6 +37,7 @@ MapHandler.Z_INDEX_PLACE_AAPENT = 100;
 MapHandler.Z_INDEX_PLACE_GOOGLE = 50;
 
 MapHandler.MARKER_CLUSTERER_PLACES_GRID = 30;
+MapHandler.MARKER_CLUSTERER_MAX_ZOOM = 15;
 
 // /CONSTANTS
 
@@ -91,7 +92,8 @@ MapHandler.prototype.doInit = function() {
 		
 		// Place markers clusterer
 		this.markerPlacesClusterer = new MarkerClusterer(this.map, [], {
-			gridSize: MapHandler.MARKER_CLUSTERER_PLACES_GRID 
+			gridSize: MapHandler.MARKER_CLUSTERER_PLACES_GRID,
+			maxZoom : MapHandler.MARKER_CLUSTERER_MAX_ZOOM
 		});
 		
 		// Location marker
@@ -126,7 +128,7 @@ MapHandler.prototype.doInit = function() {
 		
 		google.maps.event.addListener(this.markerPlace, 'click', function() {
 			if (this.placeId)
-				context.getEventHandler().handle(new PlaceEvent(this.placeId));
+				context.aapentHandler.getEventHandler().handle(new PlaceEvent(this.placeId));
 		});
 		
 		// /MARKERS
@@ -144,6 +146,7 @@ MapHandler.prototype.doInit = function() {
 	}
 	
 	this.mapPlacesList.addNotifyOnChange(function(type, object) {		
+		console.log("MapPlacesList", type, object);
 		switch (type) {
 		case "add":
 			context.doPlaceAdd(object);
@@ -221,53 +224,9 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 	if (!this.map)
 		return console.error("MapHandler.handleMapPlace: Map is not initilized");
 
-	if (this.markersPlaces[place.id])
-		return; // Already placed
-
-// var marker = new PinImageMarker({
-// map : this.aapentHandler.map,
-// placeId : place.id,
-// title : place.name,
-// position : new google.maps.LatLng(place.location.lat, place.location.lng),
-// zIndex : place.isGoogle ? MapHandler.MARKER_ZINDEX_PLACE_GOOGLE :
-// MapHandler.MARKER_ZINDEX_PLACE_AAPENT,
-// image : place.images.pin,
-// imageScale : place.isGoogle ? 0.5 : 1,
-// strokeColor : typeof place.hours.isOpen == "boolean" ? (place.hours.isOpen ?
-// "#6aa84f" : "#e06666") : null
-// });
-	// var marker = new google.maps.Marker({
-	// map : this.aapentHandler.map,
-	// visible : true,
-	// placeId : place.id,
-	// title : place.name,
-	// position : new google.maps.LatLng(place.location.lat,
-	// place.location.lng),
-	// zIndex : place.isGoogle ? MapHandler.MARKER_ZINDEX_PLACE_GOOGLE :
-	// MapHandler.MARKER_ZINDEX_PLACE_AAPENT,
-	// optimized: false
-	// });
-	// if (place.images.pin) {
-	// var size = new google.maps.Size(20, 20);
-	// if (place.isAapen)
-	// size = new google.maps.Size(50, 50);
-	// marker.setIcon(new google.maps.MarkerImage(place.images.pin, null, null,
-	// null, size));
-	// }
-	// marker.setIcon(new google.maps.MarkerImage(icon, null, null, null, new
-	// google.maps.Size(50, 50)));
-
-	// google.maps.event.addListener(marker, 'click', function() {
-	// if (this.placeId)
-	// context.doPlaceShow(this.placeId);
-	// });
-	
-// var marker = new google.maps.Marker({
-// position : place.location.latLng,
-// title : place.title,
-// map : this.map,
-// placeId : place.id
-// });
+	if (this.markersPlaces[place.id]) {
+		return; // Already placed		
+	}
 	
 	 // Pin symbol
 	 var symbol = {
@@ -283,22 +242,16 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 	
 	var marker = new MarkerWithLabel({
 		position : place.location.latLng,
-		title : place.title,
-//		map : this.map,
+		title : place.name,
 		 icon : symbol,
 		placeId : place.id,
 		zIndex : place.isGoogle ? MapHandler.Z_INDEX_PLACE_GOOGLE : MapHandler.Z_INDEX_PLACE_AAPENT,
 		 optimized : false,
-	   labelContent: "<img src='" + place.images.pin + "' style='height: 30px; width: 30px;' />",
+	   labelContent: "<img src='" + place.images.pin + "' style='height: 30px; width: 30px;' title='" + place.name + "' />",
 	   labelAnchor: new google.maps.Point(15, 40),
 	   labelClass: "labels", // the CSS class for the label
 	   labelStyle: {opacity: 1.0}
 	 });
-	
-// marker.addListener(function(pinImage) {
-// if (pinImage.options.placeId)
-// context.doPlaceShow(pinImage.options.placeId);
-// });
 
 	google.maps.event.addListener(marker, 'click', function() {
 		if (this.placeId)

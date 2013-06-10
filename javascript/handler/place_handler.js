@@ -53,18 +53,25 @@ PlaceHandler.prototype.getPlace = function(placeId) {
 };
 
 PlaceHandler.prototype.getDuplicatePlace = function(place) {
+	var places = {};
 	if (place.isGoogle)
+		places = this.placesAapent;
+	else
+		places = this.placesGoogle;
+		
+	var placeTemp = null, title = null, titleTemp = null;
+	for(var i in places)
 	{
-		var placeTemp = null;
-		for(var i in this.placesAapent)
+		placeTemp = this.getPlace(places[i]);
+		if (placeTemp && place.group == placeTemp.group)
 		{
-			placeTemp = this.getPlace(this.placesAapent[i]);
-			if (placeTemp && place.group == placeTemp.group)
+			title = place.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " ").trim();
+			titleTemp = placeTemp.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " ").trim();
+// console.log("GetDuplicatePlace", place.id, title, titleTemp, title ==
+// titleTemp);
+			if (title == titleTemp)
 			{
-				if (place.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " ") == placeTemp.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " "))
-				{
-					return placeTemp.id;
-				}
+				return placeTemp.id;
 			}
 		}
 	}
@@ -88,21 +95,27 @@ PlaceHandler.prototype.handleRetrievedAapentPlaces = function(data) {
 	var places = data.places;
 
 	var placesObjects = {}, place = null, placeIds = {};
-	for ( var i in places) {
-		place = places[i];
-		placesObjects[i] = this.createPlace(place); // PlaceUtil.createPlaceFromAapent(place,
+	for ( var i in places) {		
+		if (this.isPlace(places[i].id))
+			continue;
+		
+		place = this.createPlace(places[i]);		
+		placesObjects[place.id] = place // PlaceUtil.createPlaceFromAapent(place,
 													// this.aapentHandler.getGroupPlace(place.group));
-		placeIds[place.id] = {
-			id : place.id
-		};
-				
-		this.placesAapent[place.id] = place.id;
+		this.placesAapent[place.id] = place.id;				
 		
 		var placeDuplicate = this.getDuplicatePlace(place);
 		if (placeDuplicate)
 		{
+			console.log(place.id, placeDuplicate, place.name);
 			this.mergePlaces(place, placeDuplicate);
 			this.aapentHandler.mapHandler.mapPlacesList.remove(placeDuplicate);
+		}
+		else
+		{
+			placeIds[place.id] = {
+					id : place.id
+			};
 		}
 	}
 
@@ -345,24 +358,29 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 	var placeResultsObject = {};
 	var placeResultsIds = {};
 
+	var place = null;
 	for ( var i in placeResults) {
-		var place = this.createPlace(placeResults[i]); // PlaceUtil.createPlaceFromGoogle(placeResults[i],
-															// this.placesDetailsList.getItem(placeResults[i].id));
-		placeResultsObject[place.id] = place;
-		placeResultsIds[place.id] = {
-			id : place.id
+		placeResultsIds[placeResults[i].id] = {
+			id : placeResults[i].id
 		};
 		
-		if (type == "google_text") {
-			this.placesGoogle[place.id] = place.id;			
-		}
-		else {
-			this.placesAapent[place.id] = place.id;			
-		}
+		if (!this.isPlace(placeResults.id))
+		{		
+			place = this.createPlace(placeResults[i]); // PlaceUtil.createPlaceFromGoogle(placeResults[i],
+															// this.placesDetailsList.getItem(placeResults[i].id));
+			placeResultsObject[place.id] = place;
 		
-		var placeDuplicate = this.getDuplicatePlace(place);
-		if (placeDuplicate) {
-			this.mergePlaces(place, placeDuplicate);			
+			if (type == "google_text") {
+				this.placesGoogle[place.id] = place.id;			
+			}
+			else {
+				this.placesAapent[place.id] = place.id;			
+			}
+		
+			var placeDuplicate = this.getDuplicatePlace(place);
+			if (placeDuplicate) {
+				this.mergePlaces(place, placeDuplicate);			
+			}			
 		}
 	}
 		
@@ -405,12 +423,12 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 	var placesObjects = {};
 	var placesIds = {};
 	for ( var i in places) {
+		if (this.isPlace(places[i].id))
+			continue;
+		
 		var place = this.createPlace(places[i]); // PlaceUtil.createPlaceFromGoogle(places[i],
 																	// this.placesDetailsList.getItem(places[i].id));
 		placesObjects[place.id] = place;
-		placesIds[place.id] = {
-			id : place.id
-		};
 		
 		this.getDuplicatePlace(place);
 		this.placesGoogle[place.id] = place.id;
@@ -419,7 +437,13 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 		if (placeDuplicate)
 		{
 			this.mergePlaces(place, placeDuplicate);
-			delete placesIds[place.id];
+			this.aapentHandler.mapHandler.mapPlacesList.remove(place.id);
+		}
+		else
+		{
+			placesIds[place.id] = {
+				id : place.id
+			};			
 		}
 	}
 
@@ -612,14 +636,14 @@ PlaceHandler.prototype.mergePlaces = function(place, placeMergeId) {
 	{
 		place.aapent.id = placeMerge.id;
 		
-//		placeMerge.google = place.google;
+// placeMerge.google = place.google;
 		placeMerge.google.id = place.id;
 	}
 	else if (place.isAapent)
 	{		
 		placeMerge.aapent.id = place.id;
 		
-//		place.google = placeMerge.google; TODO Fix merge places
+// place.google = placeMerge.google; TODO Fix merge places
 		place.google.id = placeMerge.id;
 	}
 }

@@ -105,6 +105,7 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 		return console.error("PlaceAppPresenterView.doPlaceDraw: Place dosen't exist (%s)", placeId);
 	this.getRoot().empty();
 
+	console.log("PlaceAppPresenterView.doPlaceDraw", placeId, this.place);
 	// var placeDetails = {};
 	// // Google Place
 	// if (this.place.reference) {
