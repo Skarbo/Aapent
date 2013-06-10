@@ -48,6 +48,7 @@ PlaceUtil.PLACE_DEFAULT = {
 	isAapent : false,
 	isGoogle : false,
 	name : null,
+	group : null,
 	location : {
 		lat : null,
 		lng : null
@@ -67,10 +68,14 @@ PlaceUtil.PLACE_DEFAULT = {
 		pin : null		
 	},
 	google : {
+		id : null,
 		reference : null,
 		plus : null,
 		detail : null,
 		place : null
+	},
+	aapent : {
+		id : null
 	},
 	types : []
 };

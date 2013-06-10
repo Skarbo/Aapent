@@ -1,9 +1,11 @@
 SearchEvent.prototype = new Event();
 
-function SearchEvent(search, latLng, callback) {
+/**
+ * @param {Object} callback Object(success, fail)
+ */
+function SearchEvent(search, callback) {
 	this.search = search;
-	this.latLng = latLng;
-	this.callback = callback;
+	this.callback = callback || {};
 }
 
 // VARIABLES
@@ -19,13 +21,6 @@ SearchEvent.TYPE = "SearchEvent";
  */
 SearchEvent.prototype.getSearch = function() {
 	return this.search;
-};
-
-/**
- * @return {Object}
- */
-SearchEvent.prototype.getLatLng = function() {
-	return this.latLng;
 };
 
 /**

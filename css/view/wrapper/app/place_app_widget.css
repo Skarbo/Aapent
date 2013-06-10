@@ -258,7 +258,7 @@
 
 #place_wrapper #place_container .hours_wrapper[data-alcohol] .hours_container .times_wrapper .times_container .times_row .hour_alcohol
 	{
-	display: inherit;
+	display: table-cell;
 }
 
 /* ... ... /Row */

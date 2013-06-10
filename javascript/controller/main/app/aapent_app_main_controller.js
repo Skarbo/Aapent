@@ -50,23 +50,23 @@ AapentAppMainController.prototype.doBindEventHandler = function() {
 	AppMainController.prototype.doBindEventHandler.call(this);
 	var context = this;
 
-	this.getEventHandler().registerListener(MapinitEvent.TYPE,
-	/**
-	 * @param {MapinitEvent}
-	 *            event
-	 */
-	function(event) {
-		context.getAapentHandler().doMapInit();
-	});
-
-	this.getEventHandler().registerListener(MaploadedEvent.TYPE,
-	/**
-	 * @param {MaploadedEvent}
-	 *            event
-	 */
-	function(event) {
-		context.getAapentHandler().doMapLoaded();
-	});
+//	this.getEventHandler().registerListener(MapinitEvent.TYPE,
+//	/**
+//	 * @param {MapinitEvent}
+//	 *            event
+//	 */
+//	function(event) {
+//		context.getAapentHandler().doMapInit();
+//	});
+//
+//	this.getEventHandler().registerListener(MaploadedEvent.TYPE,
+//	/**
+//	 * @param {MaploadedEvent}
+//	 *            event
+//	 */
+//	function(event) {
+//		context.getAapentHandler().doMapLoaded();
+//	});
 
 //	this.getEventHandler().registerListener(PositionEvent.TYPE,
 //	/**
@@ -89,7 +89,8 @@ AapentAppMainController.prototype.doBindEventHandler = function() {
 AapentAppMainController.prototype.render = function(view) {
 	AppMainController.prototype.render.call(this, view);
 	
-	this.getAapentHandler().doRetrieveAapent({});
+//	this.getAapentHandler().doRetrieveAapent({});
+	this.getAapentHandler().doInit();
 };
 
 // ... /RENDER

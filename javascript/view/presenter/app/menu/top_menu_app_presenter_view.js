@@ -74,11 +74,13 @@ TopMenuAppPresenterView.prototype.doMenuClose = function() {
 };
 
 TopMenuAppPresenterView.prototype.doSearch = function(searchText) {
-	this.getView().getAapentHandler().doSearch(searchText);
+//	this.getView().getAapentHandler().doSearch(searchText);	
+	this.getView().getEventHandler().handle(new SearchEvent(searchText));
 };
 
 TopMenuAppPresenterView.prototype.doSearchReset = function() {
-	this.getView().getAapentHandler().doSearchReset();
+	this.getView().getEventHandler().handle(new SearchEvent(null));
+//	this.getView().getAapentHandler().doSearchReset();
 	if (this.getSearchInputElement().val() == "")
 		return this.doMenuClose();
 	this.getSearchInputElement().val("");

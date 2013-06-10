@@ -8,7 +8,7 @@ class CssResource extends AbstractCssResource
 
     private static $CSS_ROOT = "css";
 
-    private $cssFile = "stylesheet.css.php";
+    private $cssFile = "stylesheet.css.php?mode=%s";
 
     // /VARIABLES
 
@@ -27,9 +27,9 @@ class CssResource extends AbstractCssResource
     // FUNCTIONS
 
 
-    public function getCssFile()
+    public function getCssFile( $mode )
     {
-        return $this->cssFile;
+        return sprintf( $this->cssFile, $mode );
     }
 
     // /FUNCTIONS

@@ -44,7 +44,7 @@ ResultsSearchAppPresenterView.prototype.getResultsNoneElement = function() {
  * @returns {ListAdapter}
  */
 ResultsSearchAppPresenterView.prototype.getSearchResultsList = function() {
-	return this.getAapentHandler().searchResultsList;
+	return this.getAapentHandler().placeHandler.searchResultsList;
 };
 
 // ... /GET
@@ -101,7 +101,7 @@ ResultsSearchAppPresenterView.prototype.doResultDirections = function(placeId) {
 	if (!isPlace)
 		return console.error("ResultsSearchAppPresenterView.doResultDirections: Place dosen't exist (%s)", placeId);
 
-	this.getAapentHandler().doPlaceDirections(placeId);
+	this.getAapentHandler().doDirections(placeId);
 };
 
 ResultsSearchAppPresenterView.prototype.doResultSelect = function(placeId) {
@@ -109,14 +109,17 @@ ResultsSearchAppPresenterView.prototype.doResultSelect = function(placeId) {
 	if (!isPlace)
 		return console.error("ResultsSearchAppPresenterView.doResultSelect: Place dosen't exist (%s)", placeId);
 
-	this.getView().doPlaceShow(placeId);
+//	this.getView().doPlaceShow(placeId);
+	this.getEventHandler().handle(new PlaceEvent(placeId));
 };
 
 ResultsSearchAppPresenterView.prototype.doResultsSort = function() {
 	this.getResultElements().sortElements(function(left, right) {
 		var leftDistance = parseInt($(left).attr("data-result-distance"));
 		var rightDistance = parseInt($(right).attr("data-result-distance"));
-		return isNaN(leftDistance) && isNaN(rightDistance) ? 0 : (leftDistance > rightDistance ? 1 : -1);
+		var leftHours = $(left).attr("data-result-hours") || null;
+		var rightHours = $(right).attr("data-result-hours") || null;
+		return isNaN(leftDistance) && isNaN(rightDistance) ? (leftHours > rightHours ? 1 : -1) : (leftDistance > rightDistance ? 1 : -1);
 	});
 };
 

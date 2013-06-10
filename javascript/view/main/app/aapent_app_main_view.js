@@ -6,7 +6,7 @@ function AapentAppMainView(wrapperId) {
 	this.navigationPresenter = new NavigationAppPresenterView(this);
 	this.topMenuPresenter = new TopMenuAppPresenterView(this);
 	this.leftMenuPresenter = new LeftMenuAppPresenterView(this);
-	this.markersPlaces = {};
+//	this.markersPlaces = {};
 }
 
 // /CONSTRUCTOR
@@ -144,16 +144,16 @@ AapentAppMainView.prototype.doBindEventHandler = function() {
 
 	// LIST
 
-	this.getAapentHandler().mapPlacesList.addNotifyOnChange(function(type, object) {
-		switch (type) {
-		case "add":
-			context.handleMapPlace(object);
-			break;
-		case "addall":
-			context.handleMapPlaces(object);
-			break;
-		}
-	});
+//	this.getAapentHandler().mapPlacesList.addNotifyOnChange(function(type, object) {
+//		switch (type) {
+//		case "add":
+//			context.handleMapPlace(object);
+//			break;
+//		case "addall":
+//			context.handleMapPlaces(object);
+//			break;
+//		}
+//	});
 
 	// /LIST
 
@@ -172,18 +172,17 @@ AapentAppMainView.prototype.doPlaceShow = function(placeId) {
 	var place = this.getAapentHandler().getPlace(placeId);
 	if (!place)
 		return console.error("AapentAppMainView.doPlaceShow: Place dosen't exist (%s)", placeId);
-	console.log("AapentAppMainView.doPlaceShow", placeId, place);
 
 	// Show Place in left menu if establishment
 	var establishment = jQuery.inArray("establishment", place.types);
 	if (establishment > -1) {
-		if (place.google.reference) {
-			this.getAapentHandler().doRetrievePlaceDetails(place.id);
-		}
-		this.leftMenuPresenter.placePresenter.doPlaceDraw(place.id);
+//		if (place.google.reference) {
+//			this.getAapentHandler().doRetrievePlaceDetails(place.id);
+//		}
+//		this.leftMenuPresenter.placePresenter.doPlaceDraw(place.id);
+//		this.getAapentHandler().doMapPlace(place.id);
+		
 		this.doNavigationSelect("place");
-
-		this.getAapentHandler().doMapPlace(place.id);
 	} else {
 		this.doPlaceShowOnMap(placeId);
 	}
@@ -196,11 +195,11 @@ AapentAppMainView.prototype.doPlaceShowOnMap = function(placeId) {
 
 	// Left menu is covering map, close menu
 	if (this.getLeftMenuWrapperElement().css("right") == "0px") {
-		console.log("AapentAppMainView.doPlaceShowOnMap: Close menu");
 		this.doMenu(false);
 	}
 
-	this.getAapentHandler().doMapPlace(placeId);
+	this.getAapentHandler().mapHandler.doPlaceSet(placeId);
+//	this.getAapentHandler().doMapPlace(placeId);
 };
 
 AapentAppMainView.prototype.doNavigationSelect = function(navigationId) {
@@ -228,66 +227,66 @@ AapentAppMainView.prototype.doMenu = function(open) {
 
 // ... ... ... PLACES
 
-AapentAppMainView.prototype.handleMapPlaces = function(placeIds) {
-	for ( var i in placeIds) {
-		this.handleMapPlace(placeIds[i].id);
-	}
-};
-
-AapentAppMainView.prototype.handleMapPlace = function(placeId) {
-	var context = this;
-	var place = this.getAapentHandler().getPlace(placeId);
-
-	if (!place)
-		return console.error("AapentAppMainView.handleMapPlace: Place dosn't exist (%s)", placeId);
-	if (!this.getAapentHandler().map)
-		return console.error("AapentAppMainView.handleMapPlace: Map is not initilized");
-
-	if (this.markersPlaces[place.id])
-		return; // Already placed
-
-	var marker = new PinImageMarker({
-		map : this.getAapentHandler().map,
-		placeId : place.id,
-		title : place.name,
-		position : new google.maps.LatLng(place.location.lat, place.location.lng),
-		zIndex : place.isGoogle ? AapentAppMainView.MARKER_ZINDEX_PLACE_GOOGLE : AapentAppMainView.MARKER_ZINDEX_PLACE_AAPENT,
-		image : place.images.pin,
-		imageScale : place.isGoogle ? 0.5 : 1,
-		strokeColor : typeof place.hours.isOpen == "boolean" ? (place.hours.isOpen ? "#6aa84f" : "#e06666") : null
-	});
-	// var marker = new google.maps.Marker({
-	// map : this.getAapentHandler().map,
-	// visible : true,
-	// placeId : place.id,
-	// title : place.name,
-	// position : new google.maps.LatLng(place.location.lat,
-	// place.location.lng),
-	// zIndex : place.isGoogle ? AapentAppMainView.MARKER_ZINDEX_PLACE_GOOGLE :
-	// AapentAppMainView.MARKER_ZINDEX_PLACE_AAPENT,
-	// optimized: false
-	// });
-	// if (place.images.pin) {
-	// var size = new google.maps.Size(20, 20);
-	// if (place.isAapen)
-	// size = new google.maps.Size(50, 50);
-	// marker.setIcon(new google.maps.MarkerImage(place.images.pin, null, null,
-	// null, size));
-	// }
-	// marker.setIcon(new google.maps.MarkerImage(icon, null, null, null, new
-	// google.maps.Size(50, 50)));
-
-	// google.maps.event.addListener(marker, 'click', function() {
-	// if (this.placeId)
-	// context.doPlaceShow(this.placeId);
-	// });
-	marker.addListener(function(pinImage) {
-		if (pinImage.options.placeId)
-			context.doPlaceShow(pinImage.options.placeId);
-	});
-
-	this.markersPlaces[place.id] = marker;
-};
+//AapentAppMainView.prototype.handleMapPlaces = function(placeIds) {
+//	for ( var i in placeIds) {
+//		this.handleMapPlace(placeIds[i].id);
+//	}
+//};
+//
+//AapentAppMainView.prototype.handleMapPlace = function(placeId) {
+//	var context = this;
+//	var place = this.getAapentHandler().getPlace(placeId);
+//
+//	if (!place)
+//		return console.error("AapentAppMainView.handleMapPlace: Place dosn't exist (%s)", placeId);
+//	if (!this.getAapentHandler().map)
+//		return console.error("AapentAppMainView.handleMapPlace: Map is not initilized");
+//
+//	if (this.markersPlaces[place.id])
+//		return; // Already placed
+//
+//	var marker = new PinImageMarker({
+//		map : this.getAapentHandler().map,
+//		placeId : place.id,
+//		title : place.name,
+//		position : new google.maps.LatLng(place.location.lat, place.location.lng),
+//		zIndex : place.isGoogle ? AapentAppMainView.MARKER_ZINDEX_PLACE_GOOGLE : AapentAppMainView.MARKER_ZINDEX_PLACE_AAPENT,
+//		image : place.images.pin,
+//		imageScale : place.isGoogle ? 0.5 : 1,
+//		strokeColor : typeof place.hours.isOpen == "boolean" ? (place.hours.isOpen ? "#6aa84f" : "#e06666") : null
+//	});
+//	// var marker = new google.maps.Marker({
+//	// map : this.getAapentHandler().map,
+//	// visible : true,
+//	// placeId : place.id,
+//	// title : place.name,
+//	// position : new google.maps.LatLng(place.location.lat,
+//	// place.location.lng),
+//	// zIndex : place.isGoogle ? AapentAppMainView.MARKER_ZINDEX_PLACE_GOOGLE :
+//	// AapentAppMainView.MARKER_ZINDEX_PLACE_AAPENT,
+//	// optimized: false
+//	// });
+//	// if (place.images.pin) {
+//	// var size = new google.maps.Size(20, 20);
+//	// if (place.isAapen)
+//	// size = new google.maps.Size(50, 50);
+//	// marker.setIcon(new google.maps.MarkerImage(place.images.pin, null, null,
+//	// null, size));
+//	// }
+//	// marker.setIcon(new google.maps.MarkerImage(icon, null, null, null, new
+//	// google.maps.Size(50, 50)));
+//
+//	// google.maps.event.addListener(marker, 'click', function() {
+//	// if (this.placeId)
+//	// context.doPlaceShow(this.placeId);
+//	// });
+//	marker.addListener(function(pinImage) {
+//		if (pinImage.options.placeId)
+//			context.doPlaceShow(pinImage.options.placeId);
+//	});
+//
+//	this.markersPlaces[place.id] = marker;
+//};
 
 // ... ... ... /PLACES
 

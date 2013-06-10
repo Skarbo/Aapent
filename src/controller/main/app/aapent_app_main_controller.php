@@ -1,7 +1,6 @@
 <?php
 
-class AapentAppMainController extends AppMainController
-{
+class AapentAppMainController extends AppMainController {
 
     // VARIABLES
 
@@ -23,21 +22,21 @@ class AapentAppMainController extends AppMainController
     /**
      * @see MainController::getLastModified()
      */
-    public function getLastModified()
-    {
+    public function getLastModified() {
         return max( filemtime( __FILE__ ), parent::getLastModified() );
     }
 
     /**
      * @see AbstractMainController::after()
      */
-    public function after()
-    {
+    public function after() {
         parent::after();
 
         $this->addJavascriptFile( Resource::javascript()->getJqueryApiFile() );
         $this->addJavascriptFile( Resource::javascript()->getJavascriptFile( $this->getMode() ) );
-        $this->addCssFile( Resource::css()->getCssFile() );
+        $this->addJavascriptFile( Resource::javascript()->getGoogleMapsMarkerclusterer() );
+//         $this->addJavascriptFile( Resource::javascript()->getGoogleMapsMarkerlabel() );
+        $this->addCssFile( Resource::css()->getCssFile( $this->getMode() ) );
         $this->addHead(
                 Xhtml::link()->href( Resource::css()->getFontRoboto() )->rel( LinkXhtml::$REL_STYLESHEET )->type(
                         LinkXhtml::$TYPE_CSS ) );
@@ -62,7 +61,7 @@ EOD;
 var eventHandler, view, controller;
 $(document).ready(function() {
 	%s
-} );
+});
 EOD;
 
         $this->addJavascriptCode( sprintf( $code, $codeBody ) );
@@ -72,8 +71,7 @@ EOD;
     /**
      * @see AbstractController::request()
      */
-    public function request()
-    {
+    public function request() {
 
     }
 

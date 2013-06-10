@@ -57,7 +57,7 @@ NavigationAppPresenterView.prototype.doBindEventHandler = function() {
 
 	this.getItemElements().filter("#nav_item_location").on("touchclick", function() {
 		if (context.getAapentHandler().position != null) {
-			context.getAapentHandler().doMapViewport(context.getAapentHandler().position, true);
+			context.getAapentHandler().mapHandler.doViewport(context.getAapentHandler().position, true);
 		} else {
 			context.getAapentHandler().doGeolocationInit();
 		}

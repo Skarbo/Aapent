@@ -52,6 +52,7 @@ PlaceAppPresenterView.prototype.createPhoneElement = function(phone) {
 };
 
 PlaceAppPresenterView.prototype.createEmailElement = function(email) {
+	email = (email.split("@")[0]).length > 20 ? Core.sprintf( "%s..@%s", email.split("@")[0].substr(0, 18), email.split("@")[1] ) : email;
 	return $("<a />", {
 		href : "mailto:" + email,
 		text : email,
@@ -75,9 +76,18 @@ PlaceAppPresenterView.prototype.createWebsiteElement = function(website) {
 PlaceAppPresenterView.prototype.doBindEventHandler = function() {
 	AbstractPresenterView.prototype.doBindEventHandler.call(this);
 	var context = this;
+	
+	this.getEventHandler().registerListener(PlaceEvent.TYPE,
+			/**
+			 * @param {PlaceEvent}
+			 *            event
+			 */
+			function(event) {
+		context.doPlaceDraw(event.getPlaceId());
+	});
 
 	// Search result list
-	this.getAapentHandler().placesDetailsList.addNotifyOnChange(function(type, object) {
+	this.getAapentHandler().placeHandler.placesList.addNotifyOnChange(function(type, object) {
 		switch (type) {
 		case "add":
 			if (object.id == context.placeId)
@@ -364,7 +374,7 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 		directionsButton.on("touchclick", {
 			placeId : this.place.id
 		}, function(event) {
-			context.getView().getAapentHandler().doPlaceDirections(event.data.placeId);
+			context.getView().getAapentHandler().doDirections(event.data.placeId);
 		});
 	} else
 		directionsButton.addClass("hide");
