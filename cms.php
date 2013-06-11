@@ -17,7 +17,7 @@ function __autoload( $class_name )
 }
 
 // Initiate AapentApi
-$api = new AapentApi( AapentApi::MODE_PROD );
+$api = new AapentApi( $_SERVER[ "SERVER_PORT" ] == AapentApi::LOCALHOST_PORT ? AapentApi::MODE_TEST : AapentApi::MODE_PROD );
 
 // Set Debug handler
 $api->setDebug( array ( AapentApi::MODE_DEV => DebugHandler::LEVEL_LOW, AapentApi::MODE_PROD => DebugHandler::LEVEL_HIGH ) );

@@ -188,14 +188,9 @@
 
 #search_results_wrapper #search_results_container .search_result[data-result-distance] .distance:AFTER
 	{
-	content: "m";
+	content: attr(data-result-distance-type);
 	padding-left: 0.1em;
 	font-size: 0.8em;
-}
-
-#search_results_wrapper #search_results_container .search_result .distance[data-result-distance-km]:AFTER
-	{
-	content: "km";
 }
 
 /* ... /Distance */

@@ -293,6 +293,18 @@
 	{
 	color: darkred;
 }
+
+#place_wrapper #place_container .hours_wrapper:NOT([data-hours-more]) .hours_container .times_wrapper .times_container .times_group[data-times-group="holiday"] .times_row
+	{
+	display: none;
+}
+
+#place_wrapper #place_container .hours_wrapper .hours_container .times_wrapper .times_container .times_group[data-times-group="holiday"] .times_row[data-visible="true"]
+	{
+	display: table-row;
+}
+
+
 /* ... ... /Times group */
 
 /* ... ... Icon group */

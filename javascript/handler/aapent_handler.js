@@ -65,8 +65,7 @@ AapentHandler.prototype.getSettings = function() {
 };
 
 /**
- * @returns {Object} Place, converted from Google Place or Aapent Place, null of
- *          not exist
+ * @returns {Place}
  */
 AapentHandler.prototype.getPlace = function(placeId) {
 // return this.placesList.getItem(placeId);
@@ -377,11 +376,9 @@ AapentHandler.prototype.doDirections = function(placeId) {
 	if (!place)
 		return console.error("AapentHandler.doDirections: Place dosen't exist (%d)", placeId);
 
-	var to = [ place.location.lat, place.location.lng ];
-	var url = Core.sprintf("http://maps.google.com/maps?q=%s", to.join(","));
+	var url = Core.sprintf("http://maps.google.com/maps?q=%s", place.location.toString());
 	if (this.position) {
-		var from = [ this.position.lat(), this.position.lng() ];
-		url = Core.sprintf("http://maps.google.com/maps?saddr=%s&daddr=%s", from.join(","), to.join(","));
+		url = Core.sprintf("http://maps.google.com/maps?saddr=%s&daddr=%s", this.position.toString(), place.location.toString());
 	}
 	window.open(url, '_blank');
 };

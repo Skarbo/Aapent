@@ -109,11 +109,22 @@ ResultsSearchAppPresenterView.prototype.doResultSelect = function(placeId) {
 	if (!isPlace)
 		return console.error("ResultsSearchAppPresenterView.doResultSelect: Place dosen't exist (%s)", placeId);
 
-//	this.getView().doPlaceShow(placeId);
+// this.getView().doPlaceShow(placeId);
 	this.getEventHandler().handle(new PlaceEvent(placeId));
 };
 
 ResultsSearchAppPresenterView.prototype.doResultsSort = function() {
+	var context = this;
+	
+	// Remove duplicate Places
+	this.getResultElements().each(function (i) {
+	    var ids = context.getResultElements().filter('[data-result-id="' + $(this).attr("data-result-id") + '"]');
+	    if (ids.length > 1) {
+	    	context.getResultElements().filter('[data-result-id="' + $(this).attr("data-result-id") + '"]:gt(0)').remove();	    	
+	    }
+	});
+	
+	// Sort results according to distance
 	this.getResultElements().sortElements(function(left, right) {
 		var leftDistance = parseInt($(left).attr("data-result-distance"));
 		var rightDistance = parseInt($(right).attr("data-result-distance"));
@@ -128,7 +139,7 @@ ResultsSearchAppPresenterView.prototype.doResultsSort = function() {
 // ... HANDLE
 
 ResultsSearchAppPresenterView.prototype.handleResultAddAll = function(results) {
-	this.getContainerElement().empty();
+// this.getContainerElement().empty();
 	for ( var i in results)
 		this.handleResultAdd(results[i]);
 	this.doResultsSort();
@@ -198,11 +209,8 @@ ResultsSearchAppPresenterView.prototype.createPlaceElement = function(placeId) {
 	};
 
 	resultObject.name = resultObject.title = place.name;
-	resultObject.position = {
-		lat : place.location.lat,
-		lng : place.location.lng
-	};
-	resultObject.address = place.info.addressFormatted || place.info.address || null;
+	resultObject.position = place.location;
+	resultObject.address = place.info.address|| null;
 	resultObject.icon = place.images.pin || null;
 	resultObject.id = place.id;
 	var hours = PlaceUtil.getHours(place);
@@ -210,7 +218,7 @@ ResultsSearchAppPresenterView.prototype.createPlaceElement = function(placeId) {
 		resultObject.hours.from = hours[0].substr(0, 2);
 		resultObject.hours.to = hours[1].substr(0, 2);
 	}
-	resultObject.hours.open = PlaceUtil.isOpen(place);
+	resultObject.hours.open = place.hours.isOpen;
 
 	// // Google Place
 	// if (place.reference) {
@@ -270,13 +278,22 @@ ResultsSearchAppPresenterView.prototype.createPlaceElement = function(placeId) {
 		// Distance
 		var position = this.getAapentHandler().position;
 		if (resultObject.position && position) {
-			var distance = suggestionDistance = MapUtil.distance(position.lat(), position.lng(), resultObject.position.lat, resultObject.position.lng) * 1000; // Meters
+			var distance = google.maps.geometry.spherical.computeDistanceBetween (position, resultObject.position);
+// var distance = MapUtil.distance(position.lat(), position.lng(),
+// resultObject.position.lat, resultObject.position.lng) * 1000; // Meters
 			if (!isNaN(distance)) {
-				if (distance < 1000)
-					resultElement.find(".distance").text(Math.round(distance));
-				else
-					resultElement.find(".distance").text(Core.roundNumber(distance / 1000, 2)).attr("data-result-distance-km", "true");
-				resultElement.attr("data-result-distance", Math.round(suggestionDistance));
+				var distanceText = Core.roundNumber(distance / 10000, 2);
+				var distanceType = "mi";
+				if (distance < 1000) {
+					distanceText = Math.round(distance);
+					distanceType = "m";
+				}
+				else if (distance < 10000) {
+					distanceText = Core.roundNumber(distance / 1000, 2);
+					distanceType = "km";
+				}
+				resultElement.find(".distance").text(distanceText).attr("data-result-distance-type", distanceType);
+				resultElement.attr("data-result-distance", Math.round(distance));
 			} else
 				resultElement.find(".distance").text("");
 		} else {

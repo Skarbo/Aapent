@@ -105,7 +105,6 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 		return console.error("PlaceAppPresenterView.doPlaceDraw: Place dosen't exist (%s)", placeId);
 	this.getRoot().empty();
 
-	console.log("PlaceAppPresenterView.doPlaceDraw", placeId, this.place);
 	// var placeDetails = {};
 	// // Google Place
 	// if (this.place.reference) {
@@ -287,11 +286,12 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 			var specialday = this.getAapentHandler().features.specialdays.value[i];
 // console.log(i, specialday, !isNaN(parseInt(i)), now.getTime() <= parseInt(i),
 // specialday[specialDayType]);
-			if (!isNaN(parseInt(i)) && now.getTime() <= parseInt(i) && specialday[specialDayType])
+			var specialdayTime = parseInt(i);
+			if (!isNaN(parseInt(i)) && now.getTime() <= specialdayTime && specialday[specialDayType])
 			{
 				var timesRow = timesRowTemplate.clone();
 				
-				timesRow.find(".day").text(specialday.name);
+				timesRow.find(".day").text(specialday.name).attr("data-specialday-time", specialdayTime).attr("data-visible", specialdayTime < (now.getTime() * 1000 * 60 * 60 * 24 * 14) ? "true" : "false");
 				
 				if (specialday[specialDayType].hours) {					
 					if (specialday[specialDayType].hours == "closed")
@@ -352,11 +352,11 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 	var mapWrapper = placeElement.find(".map_wrapper");
 
 	// Streetview
-	if (this.place.location.lat && this.place.location.lng) {
-		var streetviewApiUrl = Core.sprintf(PlaceAppPresenterView.URL_STREETVIEW_API, this.place.location.lat, this.place.location.lng);
+	if (this.place.location) {
+		var streetviewApiUrl = Core.sprintf(PlaceAppPresenterView.URL_STREETVIEW_API, this.place.location.lat(), this.place.location.lng());
 		mapWrapper.find(".streetview img").attr("src", streetviewApiUrl);
 		var streetviewUrl = this.place.name && this.place.info.address ? Core.sprintf(PlaceAppPresenterView.URL_STREETVIEW, this.place.name, this.place.info.address) : Core
-				.sprintf(PlaceAppPresenterView.URL_STREETVIEW, this.place.location.lat, this.place.location.lng);
+				.sprintf(PlaceAppPresenterView.URL_STREETVIEW, this.place.location.lat(), this.place.location.lng());
 		mapWrapper.find(".streetview").on("touchclick", {
 			url : streetviewUrl
 		}, function(event) {
@@ -371,7 +371,7 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 
 	// Directions
 	var directionsButton = buttons.find(".button[data-button='directions']");
-	if (this.place.location.lat && this.place.location.lng) {
+	if (this.place.location) {
 		directionsButton.on("touchclick", {
 			placeId : this.place.id
 		}, function(event) {
@@ -382,8 +382,7 @@ PlaceAppPresenterView.prototype.doPlaceDraw = function(placeId) {
 
 	// Map
 	var mapButton = buttons.find(".button[data-button='map']");
-	var mapUrl = this.place.name && this.place.info.address ? Core.sprintf(PlaceAppPresenterView.URL_MAP, this.place.name, this.place.info.address) : (this.place.location.lat
-			&& this.place.location.lng ? Core.sprintf(PlaceAppPresenterView.URL_MAP, this.place.location.lat, this.place.location.lng) : null);
+	var mapUrl = this.place.name && this.place.info.address ? Core.sprintf(PlaceAppPresenterView.URL_MAP, this.place.name, this.place.info.address) : (this.place.location ? Core.sprintf(PlaceAppPresenterView.URL_MAP, this.place.location.lat(), this.place.location.lng() ) : null);
 	if (mapUrl) {
 		mapButton.on("touchclick", {
 			url : mapUrl

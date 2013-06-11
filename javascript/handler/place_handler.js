@@ -45,11 +45,15 @@ PlaceHandler.prototype.getEventHandler = function() {
 };
 
 /**
- * @returns {Object} Place, converted from Google Place or Aapent Place, null of
- *          not exist
+ * @returns {Place}
  */
 PlaceHandler.prototype.getPlace = function(placeId) {
-	return this.placesList.getItem(placeId);
+	var place = this.placesList.getItem(placeId);
+	if (!place)
+		return null;
+	if (place.isGoogle && place.aapent.id)
+		return this.placesList.getItem(place.aapent.id);
+	return place;
 };
 
 PlaceHandler.prototype.getDuplicatePlace = function(place) {
@@ -58,24 +62,22 @@ PlaceHandler.prototype.getDuplicatePlace = function(place) {
 		places = this.placesAapent;
 	else
 		places = this.placesGoogle;
-		
+
 	var placeTemp = null, title = null, titleTemp = null;
-	for(var i in places)
-	{
+	for ( var i in places) {
 		placeTemp = this.getPlace(places[i]);
-		if (placeTemp && place.group == placeTemp.group)
-		{
+		if (placeTemp && place.group == placeTemp.group) {
 			title = place.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " ").trim();
 			titleTemp = placeTemp.name.replace(PlaceHandler.REGEX_PLACE_MATCH, "").replace(/\s+/, " ").trim();
-// console.log("GetDuplicatePlace", place.id, title, titleTemp, title ==
-// titleTemp);
-			if (title == titleTemp)
-			{
+			// console.log("GetDuplicatePlace", place.id, title, titleTemp,
+			// title ==
+			// titleTemp);
+			if (title == titleTemp) {
 				return placeTemp.id;
 			}
 		}
 	}
-	
+
 	return null;
 };
 
@@ -89,32 +91,40 @@ PlaceHandler.prototype.isPlace = function(placeId) {
 
 // ... IS
 
+// ... CREATE
+
+/**
+ * @returns {Place}
+ */
+PlaceHandler.prototype.createPlace = function(place) {
+	return new Place(place, this.placesList, this.aapentHandler.groupPlacesList, this.placesDetailsList);
+};
+
+// ... /CREATE
+
 // ... HANDLE
 
 PlaceHandler.prototype.handleRetrievedAapentPlaces = function(data) {
 	var places = data.places;
 
 	var placesObjects = {}, place = null, placeIds = {};
-	for ( var i in places) {		
+	for ( var i in places) {
 		if (this.isPlace(places[i].id))
 			continue;
-		
-		place = this.createPlace(places[i]);		
+
+		place = this.createPlace(places[i]); //this.createPlace(places[i]);
 		placesObjects[place.id] = place // PlaceUtil.createPlaceFromAapent(place,
-													// this.aapentHandler.getGroupPlace(place.group));
-		this.placesAapent[place.id] = place.id;				
-		
+		// this.aapentHandler.getGroupPlace(place.group));
+		this.placesAapent[place.id] = place.id;
+
 		var placeDuplicate = this.getDuplicatePlace(place);
-		if (placeDuplicate)
-		{
-			console.log(place.id, placeDuplicate, place.name);
-			this.mergePlaces(place, placeDuplicate);
+		if (placeDuplicate) {
+//			console.log("Duplicate", place.id, placeDuplicate, place.name);
+			place.mergePlace(this.placesList.getItem(placeDuplicate));
 			this.aapentHandler.mapHandler.mapPlacesList.remove(placeDuplicate);
-		}
-		else
-		{
+		} else {
 			placeIds[place.id] = {
-					id : place.id
+				id : place.id
 			};
 		}
 	}
@@ -123,19 +133,24 @@ PlaceHandler.prototype.handleRetrievedAapentPlaces = function(data) {
 	this.aapentHandler.mapHandler.mapPlacesList.addAll(placeIds);
 };
 
-PlaceHandler.prototype.handleRetrievedPlaceDetail = function(placeDetail) {
+PlaceHandler.prototype.handleRetrievedPlaceDetail = function(placeId, placeDetail) {
+	var place = this.getPlace(placeId);
+	if (!place)
+		return console.error("PlaceHandler.handleRetrievedPlaceDetail: Place not given", placeId, placeDetail);
 	if (!placeDetail)
-		return console.error("PlaceHandler.handleRetrievedPlaceDetail: Place detail not given", placeDetail);
-	var place = this.getPlace(placeDetail.id);
-	this.placesDetailsList.add(place.id, placeDetail);
+		return console.error("PlaceHandler.handleRetrievedPlaceDetail: Place detail not given (%d)", placeId, placeDetail);
 
-	if (place) {
-		place = this.createPlace(place.google.place); // ;
-											// PlaceUtil.createPlaceFromGoogle(place.google.place,
-											// placeDetail);
-	} else {
-		place = this.createPlace(placeDetail); // PlaceUtil.createPlaceFromGoogle(placeDetail);
-	}
+	place.mergePlaceDetail(placeDetail);
+	this.placesDetailsList.add(place.google.id, placeDetail);
+	
+	// if (place) {
+	// place = this.createPlace(place.google.place); // ;
+	// // PlaceUtil.createPlaceFromGoogle(place.google.place,
+	// // placeDetail);
+	// } else {
+	// place = this.createPlace(placeDetail); //
+	// PlaceUtil.createPlaceFromGoogle(placeDetail);
+	// }
 
 	this.placesList.add(place.id, place);
 };
@@ -240,16 +255,18 @@ PlaceHandler.prototype.doRetrieveDetails = function(placeId) {
 	var place = this.getPlace(placeId);
 	if (!place)
 		return console.error("PlaceHandler.doRetrieveDetails: Place dosen't exist (%s)", placeId);
+	if (this.placesDetailsList.getItem(place.google.id))
+		return;
 
 	// Google Place Details
-	if (place.google.reference) {
+	if (place.google.reference && place.isType(Place.TYPE_ESTABLISHMENT)) {
 		// Request detail
 		var callback = function(placeDetail, status) {
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				// context.doPlaceShow(PlaceUtil.createPlaceFromGoogle(googlePlace));
 				// console.log("Place details", googlePlace.id, googlePlace);
 				// context.placesDetailsList.add(googlePlace.id, googlePlace);
-				context.handleRetrievedPlaceDetail(placeDetail);
+				context.handleRetrievedPlaceDetail(placeId, placeDetail);
 			} else
 				return console.error("PlaceHandler.doRetrieveDetails: Get detail error", status);
 		}
@@ -363,42 +380,43 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 		placeResultsIds[placeResults[i].id] = {
 			id : placeResults[i].id
 		};
-		
-		if (!this.isPlace(placeResults.id))
-		{		
-			place = this.createPlace(placeResults[i]); // PlaceUtil.createPlaceFromGoogle(placeResults[i],
-															// this.placesDetailsList.getItem(placeResults[i].id));
+
+		if (!this.isPlace(placeResults.id)) {
+			place = this.createPlace(placeResults[i]); // this.createPlace(placeResults[i]); // PlaceUtil.createPlaceFromGoogle(placeResults[i],
+			// this.placesDetailsList.getItem(placeResults[i].id));
 			placeResultsObject[place.id] = place;
-		
-			if (type == "google_text") {
-				this.placesGoogle[place.id] = place.id;			
+
+			if (place.isGoogle) {
+				this.placesGoogle[place.id] = place.id;
+			} else {
+				this.placesAapent[place.id] = place.id;
 			}
-			else {
-				this.placesAapent[place.id] = place.id;			
-			}
-		
+
 			var placeDuplicate = this.getDuplicatePlace(place);
 			if (placeDuplicate) {
-				this.mergePlaces(place, placeDuplicate);			
-			}			
+//				console.log("Handle search: Duplicate", place.id, placeDuplicate, place.name);
+				if (place.isGoogle)
+					this.getPlace(placeDuplicate).mergePlace(place);
+				else
+					place.mergePlace(this.placesList.getItem(placeDuplicate));
+			}
 		}
 	}
-		
-		
-// Google Places
-// // Aapent Places
-// else {
-// for ( var i in placeResults) {
-// var place = this.createPlace(placeResults[i]); //
-// PlaceUtil.createPlaceFromAapent(placeResults[i],
-// // this.aapentHandler.getGroupPlace(placeResults[i].group));
-// placeResultsObject[place.id] = place;
-// placeResultsIds[place.id] = {
-// id : place.id
-// };
-// }
-//		
-// }
+
+	// Google Places
+	// // Aapent Places
+	// else {
+	// for ( var i in placeResults) {
+	// var place = this.createPlace(placeResults[i]); //
+	// PlaceUtil.createPlaceFromAapent(placeResults[i],
+	// // this.aapentHandler.getGroupPlace(placeResults[i].group));
+	// placeResultsObject[place.id] = place;
+	// placeResultsIds[place.id] = {
+	// id : place.id
+	// };
+	// }
+	//		
+	// }
 
 	// Add to Places list
 	this.placesList.addAll(placeResultsObject);
@@ -425,25 +443,22 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 	for ( var i in places) {
 		if (this.isPlace(places[i].id))
 			continue;
-		
-		var place = this.createPlace(places[i]); // PlaceUtil.createPlaceFromGoogle(places[i],
-																	// this.placesDetailsList.getItem(places[i].id));
+
+		var place = this.createPlace(places[i]); // this.createPlace(places[i]); // PlaceUtil.createPlaceFromGoogle(places[i],
+		// this.placesDetailsList.getItem(places[i].id));
 		placesObjects[place.id] = place;
-		
-		this.getDuplicatePlace(place);
+
 		this.placesGoogle[place.id] = place.id;
-		
+
 		var placeDuplicate = this.getDuplicatePlace(place);
-		if (placeDuplicate)
-		{
-			this.mergePlaces(place, placeDuplicate);
+		if (placeDuplicate) {
+//			console.log("Handle places Google Duplicate", place.id, placeDuplicate, place.name);
+			this.getPlace(placeDuplicate).mergePlace(place);
 			this.aapentHandler.mapHandler.mapPlacesList.remove(place.id);
-		}
-		else
-		{
+		} else {
 			placesIds[place.id] = {
 				id : place.id
-			};			
+			};
 		}
 	}
 
@@ -452,217 +467,3 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 };
 
 // ... HANDLE
-
-// ... CREATE
-
-PlaceHandler.prototype.createPlace = function(place)
-{
-	return place.reference ? this.createPlaceFromGoogle(place) : this.createPlaceFromAapent(place);
-};
-
-/**
- * @param {Object}
- *            googlePlace
- * @return {Object} Place object
- */
-PlaceHandler.prototype.createPlaceFromGoogle = function(googlePlace) {	
-	if (!googlePlace)
-		return null;
-	
-	var googlePlaceDetail = this.placesDetailsList.getItem(googlePlace.id) || {};
-	var place = jQuery.extend(true, {}, PlaceUtil.PLACE_DEFAULT);
-
-	place.isGoogle = true;
-	place.id = googlePlace.id;
-
-	// Name
-	place.name = googlePlace.name;
-
-	// Location
-	place.location.lat = googlePlace.geometry.location.lat();
-	place.location.lng = googlePlace.geometry.location.lng();
-	place.location.latLng = googlePlace.geometry.location;
-
-	// Hours
-	if (googlePlaceDetail.opening_hours && googlePlaceDetail.opening_hours.periods) {
-		place.hours.regular = jQuery.extend(true, {}, PlaceUtil.DAYS_DEFAULT);
-		for(var i in googlePlaceDetail.opening_hours.periods) {
-			var day = PlaceUtil.DAYS_STR[googlePlaceDetail.opening_hours.periods[i].close.day];
-			if (day) {
-				var open = googlePlaceDetail.opening_hours.periods[i].open.time;
-				var close = googlePlaceDetail.opening_hours.periods[i].close.time;
-				place.hours.regular[day] = [  open.substr(0,2) + ":" + open.substr(2,2), close.substr(0,2) + ":" + close.substr(2,2)];
-			}
-		}		
-	}	
-	place.hours.isOpen = googlePlace.opening_hours && googlePlace.opening_hours.open_now != undefined ? googlePlace.opening_hours.open_now : PlaceUtil.isOpen(place);
-	
-	// Info
-	 if (googlePlace.address_components) {
-		 for ( var i in googlePlace.address_components) {
-			 var component = googlePlace.address_components[i];
-			 if (jQuery.inArray("street_number", component.types) > -1)
-				 place.info.address = (place.info.address ? place.info.address + " " : "") + component.long_name;
-			 if (jQuery.inArray("route", component.types) > -1)
-				 place.info.address = component.long_name + (place.info.address ? " " + place.info.address : "");
-			 if (jQuery.inArray("locality", component.types) > -1) 
-				 place.info.city = component.long_name;
-			 if (jQuery.inArray("postal_code", component.types) > -1)
-				 place.info.zip = component.long_name;
-			 if (jQuery.inArray("country", component.types) > -1)
-				 place.info.country = component.long_name;
-		 }
-	 }
-
-	place.info.addressFormatted = googlePlace.vicinity || googlePlace.formatted_address || googlePlaceDetail.vicinity || googlePlaceDetail.formatted_address || null;
-	place.info.phone = googlePlace.formatted_phone_number ||  googlePlaceDetail.formatted_phone_number || googlePlace.international_phone_number || googlePlaceDetail.international_phone_number || null;
-	if (place.info.address)
-		place.info.address = googlePlace.vicinity || googlePlaceDetail.vicinity || place.info.addressFormatted || null;
-
-	// Link
-	place.info.link = googlePlace.website || googlePlaceDetail.website || null;
-
-	// Images
-	place.images.icon = googlePlace.icon || googlePlaceDetail.icon || null;
-	place.images.pin = place.images.icon;
-
-	// Google
-	place.google.reference = googlePlace.reference || googlePlaceDetail.reference || null;
-	place.google.plus = googlePlace.url || googlePlaceDetail.url || null;
-	if (Core.countObject(googlePlaceDetail) > 0)
-		place.google.detail = googlePlaceDetail;
-	place.google.place = googlePlace;
-
-	// Types
-	place.types = googlePlace.types || [];
-	
-	// GROUP MATCH
-	
-	place.group = this.matchPlaceToGroup(place);
-	var group = this.aapentHandler.getGroupPlace(place.group);
-	if (place.group && group) {		
-		// Images
-		place.images.icon = group.info.icon || place.images.icon || null;
-		place.images.pin = group.info.pin || place.images.pin || null;
-	}
-	
-	// /GROUP MATCH
-
-	return place;
-};
-
-/**
- * @param {Object}
- *            aapentPlace
- * @return {Object} Place object
- */
-PlaceHandler.prototype.createPlaceFromAapent = function(aapentPlace) {
-	if (!aapentPlace)
-		return null;
-	
-	var group = this.aapentHandler.getGroupPlace(aapentPlace.group) || { info : {}};
-	var googlePlaceDetail = {} ;// this.placesDetailsList.getItem(aapentPlace.google.reference)
-								// || {};
-	var place = jQuery.extend(true, {}, PlaceUtil.PLACE_DEFAULT);
-	
-	place.isAapent = true;
-	place.id = aapentPlace.id;
-	place.group = aapentPlace.group;
-
-	// Name
-	place.name = aapentPlace.name;
-
-	// Location
-	place.location.lat = aapentPlace.locationLat;
-	place.location.lng = aapentPlace.locationLong;
-	place.location.latLng = new google.maps.LatLng(place.location.lat, place.location.lng);
-	
-	// Hours
-	if (aapentPlace.hours.regular)
-		place.hours.regular = aapentPlace.hours.regular;
-	place.hours.isOpen = PlaceUtil.isOpen(place);
-	
-	// Info
-	place.info.address = aapentPlace.info.address;	
-	place.info.link = aapentPlace.info.link || group.info.link || null;
-	place.info.phone = aapentPlace.info.phone || group.info.phone|| null;
-	place.info.email = aapentPlace.info.email || group.info.email || null;
-	place.info.addressFormatted = aapentPlace.info.addressFormatted || null;
-
-	// Images
-	place.images.icon = group.info.icon || null;
-	place.images.pin = group.info.pin || null;
-
-	// Types
-	place.types = group.info.types || [];
-
-	// Google
-	if (Core.countObject(googlePlaceDetail) > 0) {
-		place.google.reference = googlePlaceDetail.reference;
-		place.google.plus = googlePlaceDetail.url || null;
-		place.google.detail = googlePlaceDetail;
-	}
-
-	return place;
-};
-
-// ... /CREATE
-
-
-
-PlaceHandler.prototype.mergePlaces = function(place, placeMergeId) {
-	var placeMerge = this.getPlace(placeMergeId);
-	if (!placeMerge)
-		return;
-	if (Core.countObject(place.hours.regular) == 0 && Core.countObject(placeMerge.hours.regular) > 0)
-	{
-		place.hours.regular = placeMerge.hours.regular;
-	}
-	else if (Core.countObject(place.hours.regular) > 0 && Core.countObject(placeMerge.hours.regular) == 0)
-	{
-		placeMerge.hours.regular = place.hours.regular;
-	}
-	
-	if (place.hours.isOpen === null && placeMerge.hours.isOpen !== null)
-	{
-		place.hours.isOpen = placeMerge.hours.isOpen;
-	}
-	else if (placeMerge.hours.isOpen === null && place.hours.isOpen !== null)
-	{
-		placeMerge.hours.isOpen = place.hours.isOpen;
-	}
-	
-	if (place.isGoogle)
-	{
-		place.aapent.id = placeMerge.id;
-		
-// placeMerge.google = place.google;
-		placeMerge.google.id = place.id;
-	}
-	else if (place.isAapent)
-	{		
-		placeMerge.aapent.id = place.id;
-		
-// place.google = placeMerge.google; TODO Fix merge places
-		place.google.id = placeMerge.id;
-	}
-}
-
-PlaceHandler.prototype.matchPlaceToGroup = function(place) {
-	if (!place)
-		return null;
-
-	var group = null;
-	for ( var i in this.aapentHandler.groupPlacesList.list) {
-		group = this.aapentHandler.groupPlacesList.list[i];
-		if (group.info.matchPlace) {
-			if (!group.info.matchPlaceObject)
-				group.info.matchPlaceObject = new RegExp(group.info.matchPlace, "g");
-
-			if (place.name.match(group.info.matchPlaceObject))
-				return group.id;
-		}
-	}
-
-	return null;
-};

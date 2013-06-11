@@ -43,6 +43,7 @@ MapHandler.MARKER_CLUSTERER_MAX_ZOOM = 15;
 
 // FUNCTIONS
 
+
 // ... DO
 
 MapHandler.prototype.doInit = function() {
@@ -145,8 +146,7 @@ MapHandler.prototype.doInit = function() {
 		};
 	}
 	
-	this.mapPlacesList.addNotifyOnChange(function(type, object) {		
-		console.log("MapPlacesList", type, object);
+	this.mapPlacesList.addNotifyOnChange(function(type, object) {
 		switch (type) {
 		case "add":
 			context.doPlaceAdd(object);
@@ -193,11 +193,9 @@ MapHandler.prototype.doPlaceSet = function(placeId) {
 	if (!place)
 		return console.error("MapHandler.doPlaceSet: Place dosen't exist (%s)", placeId);
 
-	var latLng = new google.maps.LatLng(place.location.lat, place.location.lng);
-
 	// Only place marker if Place dosen't already have a marker
 	if (!this.mapPlacesList.getItem(place.id)) {
-		this.markerPlace.setPosition(latLng);
+		this.markerPlace.setPosition(place.location);
 		this.markerPlace.setVisible(true);
 		this.markerPlace.setTitle(place.name);
 		this.markerPlace.placeId = placeId;
@@ -206,7 +204,7 @@ MapHandler.prototype.doPlaceSet = function(placeId) {
 		this.markerPlace.placeId = null;
 	}
 	
-	this.doViewport(latLng);
+	this.doViewport(place.location);
 };
 
 
@@ -225,7 +223,7 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 		return console.error("MapHandler.handleMapPlace: Map is not initilized");
 
 	if (this.markersPlaces[place.id]) {
-		return; // Already placed		
+		return; // Already placed
 	}
 	
 	 // Pin symbol
@@ -241,13 +239,13 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 	 };
 	
 	var marker = new MarkerWithLabel({
-		position : place.location.latLng,
+		position : place.location,
 		title : place.name,
-		 icon : symbol,
+		icon : symbol,
 		placeId : place.id,
 		zIndex : place.isGoogle ? MapHandler.Z_INDEX_PLACE_GOOGLE : MapHandler.Z_INDEX_PLACE_AAPENT,
-		 optimized : false,
-	   labelContent: "<img src='" + place.images.pin + "' style='height: 30px; width: 30px;' title='" + place.name + "' />",
+		optimized : false,
+	   labelContent: "<img src='../krisskarboapi/image/1x1.png' style='height: 30px; width: 30px; background-image: url(\"" + place.images.pin + "\"); background-size: 30px 30px;' title='" + place.name + "' />",
 	   labelAnchor: new google.maps.Point(15, 40),
 	   labelClass: "labels", // the CSS class for the label
 	   labelStyle: {opacity: 1.0}

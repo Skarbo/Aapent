@@ -174,8 +174,7 @@ AapentAppMainView.prototype.doPlaceShow = function(placeId) {
 		return console.error("AapentAppMainView.doPlaceShow: Place dosen't exist (%s)", placeId);
 
 	// Show Place in left menu if establishment
-	var establishment = jQuery.inArray("establishment", place.types);
-	if (establishment > -1) {
+	if (place.isType(Place.TYPE_ESTABLISHMENT)) {
 //		if (place.google.reference) {
 //			this.getAapentHandler().doRetrievePlaceDetails(place.id);
 //		}
@@ -183,6 +182,7 @@ AapentAppMainView.prototype.doPlaceShow = function(placeId) {
 //		this.getAapentHandler().doMapPlace(place.id);
 		
 		this.doNavigationSelect("place");
+		this.getAapentHandler().mapHandler.doPlaceSet(placeId);
 	} else {
 		this.doPlaceShowOnMap(placeId);
 	}
