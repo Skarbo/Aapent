@@ -204,7 +204,7 @@ Place.prototype.mergePlace = function(placeMerge) {
 	this.info.address = this.info.address || placeMerge.info.address;
 
 	this.images.icon = this.images.icon || placeMerge.info.icon;
-	this.images.pin = this.images.icon || placeMerge.info.pin;
+	this.images.pin = this.images.pin || placeMerge.info.pin;
 
 	this.types = this.types.length > 0 ? this.types : placeMerge.types;
 	
