@@ -543,7 +543,7 @@ MarkerWithLabel.prototype = new google.maps.Marker();
 MarkerWithLabel.prototype.setMap = function (theMap) {
 
   // Call the inherited function...
-  google.maps.Marker.prototype.setMap.apply(this, arguments);
+  google.maps.Marker.prototype.setMap.call(this, theMap);
 
   // ... then deal with the label:
   this.label.setMap(theMap);

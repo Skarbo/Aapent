@@ -395,8 +395,7 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 
 			var placeDuplicate = this.getDuplicatePlace(place);
 			if (placeDuplicate) {
-				// console.log("Handle search: Duplicate", place.id,
-				// placeDuplicate, place.name);
+//				 console.log("Handle search: Duplicate", place.id, placeDuplicate, place.name);
 				if (place.isGoogle) {
 					this.getPlace(placeDuplicate).mergePlace(place);
 				} else {
@@ -443,6 +442,7 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 	var placesObjects = {};
 	var placesIds = {};
+//	console.log("Handle Places Google", places);
 	for ( var i in places) {
 		if (this.isPlace(places[i].id))
 			continue;
@@ -457,8 +457,7 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 
 		var placeDuplicate = this.getDuplicatePlace(place);
 		if (placeDuplicate) {
-			// console.log("Handle places Google Duplicate", place.id,
-			// placeDuplicate, place.name);
+//			 console.log("Handle places Google Duplicate", place.id, placeDuplicate, place.name);
 			this.getPlace(placeDuplicate).mergePlace(place);
 			this.aapentHandler.mapHandler.mapPlacesList.remove(place.id);
 			this.aapentHandler.mapHandler.mapPlacesList.add(placeDuplicate, {

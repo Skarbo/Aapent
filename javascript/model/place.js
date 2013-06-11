@@ -105,7 +105,7 @@ Place.prototype.createFromGoogle = function() {
 	this.google.plus = this.place.url || null;	
 	
 	// Match group
-	this.group = this.matchPlaceToGroup(this);
+	this.group = this.matchPlaceToGroup();
 	var group = this.groupPlacesList.getItem(this.group);
 	if (this.group && group) {
 		this.images.icon = group.info.icon || this.images.icon || null;
@@ -219,9 +219,6 @@ Place.prototype.mergePlace = function(placeMerge) {
 
 
 Place.prototype.matchPlaceToGroup = function(place) {
-	if (!place)
-		return null;
-
 	var group = null;
 	for ( var i in this.groupPlacesList.list) {
 		group = this.groupPlacesList.list[i];
@@ -229,7 +226,7 @@ Place.prototype.matchPlaceToGroup = function(place) {
 			if (!group.info.matchPlaceObject)
 				group.info.matchPlaceObject = new RegExp(group.info.matchPlace, "g");
 
-			if (place.name.match(group.info.matchPlaceObject))
+			if (this.name.match(group.info.matchPlaceObject))
 				return group.id;
 		}
 	}

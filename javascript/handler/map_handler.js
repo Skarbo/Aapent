@@ -262,8 +262,10 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 
 MapHandler.prototype.doPlaceRemove = function(placeId) {
 	if (this.markersPlaces[placeId]) {
-		this.markersPlaces[placeId].setVisible(false);			
+//		this.markersPlaces[placeId].setVisible(false);			
+		this.markerPlacesClusterer.removeMarker(this.markersPlaces[placeId]);
 		this.markersPlaces[placeId].setMap(null);			
+		delete this.markersPlaces[placeId];
 	}
 };
 

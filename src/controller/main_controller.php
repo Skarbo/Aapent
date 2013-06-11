@@ -66,7 +66,7 @@ abstract class MainController extends AbstractMainController
      */
     protected function getTitle()
     {
-        return "Åpent";
+        return "Åpent - Beta";
     }
 
     // ... /GET
