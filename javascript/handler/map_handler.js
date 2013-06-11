@@ -149,13 +149,13 @@ MapHandler.prototype.doInit = function() {
 	this.mapPlacesList.addNotifyOnChange(function(type, object) {
 		switch (type) {
 		case "add":
-			context.doPlaceAdd(object);
+			context.doPlaceAdd(object.id);
 			break;
 		case "addall":
 			context.doPlacesAdd(object);
 			break;
 		case "remove":
-			context.doPlaceRemove(object);
+			context.doPlaceRemove(object.id);
 			break;
 		}
 	});
@@ -222,21 +222,21 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 	if (!this.map)
 		return console.error("MapHandler.handleMapPlace: Map is not initilized");
 
-	if (this.markersPlaces[place.id]) {
+	var symbol = {
+			path : MapHandler.SYMBOL_PLACE,
+			fillColor : "#dce3e6",
+			fillOpacity : 1,
+			scale : 0.45,
+			strokeColor : typeof place.hours.isOpen == "boolean" ? (place.hours.isOpen ? "#6aa84f" : "#e06666") : "#AAAAAA",
+			strokeWeight : 2,
+			strokeOpacity : 0.8,
+			anchor : new google.maps.Point(50, 100)
+	};	
+	
+	if (this.markersPlaces[place.id]) {		
+		this.markersPlaces[place.id].setIcon(symbol); // Update symbol
 		return; // Already placed
 	}
-	
-	 // Pin symbol
-	 var symbol = {
-		 path : MapHandler.SYMBOL_PLACE,
-		 fillColor : "#dce3e6",
-		 fillOpacity : 1,
-		 scale : 0.45,
-		 strokeColor : typeof place.hours.isOpen == "boolean" ? (place.hours.isOpen ? "#6aa84f" : "#e06666") : "#AAAAAA",
-		 strokeWeight : 2,
-		 strokeOpacity : 0.8,
-		 anchor : new google.maps.Point(50, 100)
-	 };
 	
 	var marker = new MarkerWithLabel({
 		position : place.location,
@@ -261,8 +261,10 @@ MapHandler.prototype.doPlaceAdd = function(placeId) {
 };
 
 MapHandler.prototype.doPlaceRemove = function(placeId) {
-	if (this.markersPlaces[placeId])
-		this.markersPlaces[placeId].setMap(null);
+	if (this.markersPlaces[placeId]) {
+		this.markersPlaces[placeId].setVisible(false);			
+		this.markersPlaces[placeId].setMap(null);			
+	}
 };
 
 // ... ... /PLACE

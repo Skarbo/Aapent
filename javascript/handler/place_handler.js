@@ -112,7 +112,7 @@ PlaceHandler.prototype.handleRetrievedAapentPlaces = function(data) {
 		if (this.isPlace(places[i].id))
 			continue;
 
-		place = this.createPlace(places[i]); //this.createPlace(places[i]);
+		place = this.createPlace(places[i]); // this.createPlace(places[i]);
 		placesObjects[place.id] = place // PlaceUtil.createPlaceFromAapent(place,
 		// this.aapentHandler.getGroupPlace(place.group));
 		this.placesAapent[place.id] = place.id;
@@ -122,11 +122,10 @@ PlaceHandler.prototype.handleRetrievedAapentPlaces = function(data) {
 //			console.log("Duplicate", place.id, placeDuplicate, place.name);
 			place.mergePlace(this.placesList.getItem(placeDuplicate));
 			this.aapentHandler.mapHandler.mapPlacesList.remove(placeDuplicate);
-		} else {
-			placeIds[place.id] = {
-				id : place.id
-			};
 		}
+		placeIds[place.id] = {
+			id : place.id
+		};
 	}
 
 	this.placesList.addAll(placesObjects);
@@ -142,7 +141,7 @@ PlaceHandler.prototype.handleRetrievedPlaceDetail = function(placeId, placeDetai
 
 	place.mergePlaceDetail(placeDetail);
 	this.placesDetailsList.add(place.google.id, placeDetail);
-	
+
 	// if (place) {
 	// place = this.createPlace(place.google.place); // ;
 	// // PlaceUtil.createPlaceFromGoogle(place.google.place,
@@ -318,7 +317,7 @@ PlaceHandler.prototype.doSearch = function(searchString) {
 			console.error("PlaceHandler.doSearch: Aapent search", error);
 		}
 	}
-	this.doRetrieveAapentPlacesSearch(searchString, this.aapentHandler.mapHandler.map.getCenter(), callback, {
+	context.doRetrieveAapentPlacesSearch(searchString, context.aapentHandler.mapHandler.map.getCenter(), callback, {
 		'radius' : PlaceHandler.SEARCH_RADIUS
 	});
 
@@ -341,7 +340,7 @@ PlaceHandler.prototype.doNearby = function(latLng) {
 
 	// AAPENT PLACES
 
-	this.doRetrieveAapentPlaces(latLng, null, {
+	context.doRetrieveAapentPlaces(latLng, null, {
 		radius : PlaceHandler.SEARCH_RADIUS
 	});
 
@@ -382,7 +381,9 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 		};
 
 		if (!this.isPlace(placeResults.id)) {
-			place = this.createPlace(placeResults[i]); // this.createPlace(placeResults[i]); // PlaceUtil.createPlaceFromGoogle(placeResults[i],
+			place = this.createPlace(placeResults[i]); // this.createPlace(placeResults[i]);
+			// //
+			// PlaceUtil.createPlaceFromGoogle(placeResults[i],
 			// this.placesDetailsList.getItem(placeResults[i].id));
 			placeResultsObject[place.id] = place;
 
@@ -394,11 +395,13 @@ PlaceHandler.prototype.handleSearch = function(placeResults, type, time) {
 
 			var placeDuplicate = this.getDuplicatePlace(place);
 			if (placeDuplicate) {
-//				console.log("Handle search: Duplicate", place.id, placeDuplicate, place.name);
-				if (place.isGoogle)
+				// console.log("Handle search: Duplicate", place.id,
+				// placeDuplicate, place.name);
+				if (place.isGoogle) {
 					this.getPlace(placeDuplicate).mergePlace(place);
-				else
+				} else {
 					place.mergePlace(this.placesList.getItem(placeDuplicate));
+				}
 			}
 		}
 	}
@@ -444,7 +447,9 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 		if (this.isPlace(places[i].id))
 			continue;
 
-		var place = this.createPlace(places[i]); // this.createPlace(places[i]); // PlaceUtil.createPlaceFromGoogle(places[i],
+		var place = this.createPlace(places[i]); // this.createPlace(places[i]);
+		// //
+		// PlaceUtil.createPlaceFromGoogle(places[i],
 		// this.placesDetailsList.getItem(places[i].id));
 		placesObjects[place.id] = place;
 
@@ -452,9 +457,13 @@ PlaceHandler.prototype.handlePlacesGoogle = function(places) {
 
 		var placeDuplicate = this.getDuplicatePlace(place);
 		if (placeDuplicate) {
-//			console.log("Handle places Google Duplicate", place.id, placeDuplicate, place.name);
+			// console.log("Handle places Google Duplicate", place.id,
+			// placeDuplicate, place.name);
 			this.getPlace(placeDuplicate).mergePlace(place);
 			this.aapentHandler.mapHandler.mapPlacesList.remove(place.id);
+			this.aapentHandler.mapHandler.mapPlacesList.add(placeDuplicate, {
+				id : placeDuplicate
+			});
 		} else {
 			placesIds[place.id] = {
 				id : place.id
